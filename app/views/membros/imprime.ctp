@@ -89,7 +89,7 @@ if (count($membros)>0) {
 		//dados do cartão
 		
 		
-		if ($membro['Membro']['foto']){
+		if ($membro['Membro']['foto'] && file_exists('fotos_cartao/'.$membro['Membro']["foto"])){
 			$fpdf->Image('fotos_cartao/'.$membro['Membro']["foto"],80,$y+15.5,20,20);
 		}
 

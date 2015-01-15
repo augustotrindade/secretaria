@@ -108,8 +108,8 @@ class fpdfHelper extends FPDF {
 		if($this->cabecalho){
 			$this->Image('img/logotipo.jpg',10,7,30,20.2);
 			$this->SetFont('Arial','',10);
-			$this->SetX(50);$this->Cell(0,4,utf8_decode('Igreja Evangélica. Assembléia de Deus em Serranópolis'),0,0,'C');$this->Ln();
-			$this->SetX(50);$this->Cell(0,4,utf8_decode('Rua Joaquim Maneco, nº 10 - Setor Centro - Serranópolis - GO'),0,0,'C');$this->Ln();
+			$this->SetX(50);$this->Cell(0,4,utf8_decode('IGREJA EV. ASSEMBLÉIA DE DEUS EM SERRANÓPOLIS'),0,0,'C');$this->Ln();
+			$this->SetX(50);$this->Cell(0,4,utf8_decode('Av. Geraldo P. de Azevedo Qd 119 Lt02 - Setor Rodoviário - Serranópolis - GO'),0,0,'C');$this->Ln();
 			$this->SetX(50);$this->Cell(0,4,utf8_decode('FILIADA A CADESGO E CGADB - fone 0xx64 3668-1393'),0,0,'C');$this->Ln();
 			$this->Ln(6);
 			$this->Ln();
