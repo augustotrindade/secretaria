@@ -1,5 +1,4 @@
 <h1 class="title"><b><?php echo $html->link('Cadastros',array('controller'=>'usuarios','action'=>'index')) ?></b> >> Usuários</h1>
-<?php $session->flash(); ?>
 <div class="usuarios form">
 <?php echo $form->create('Usuario',array('action'=>'salvar'));?>
 <?php echo $form->input('id'); ?>

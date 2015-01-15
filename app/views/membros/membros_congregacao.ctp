@@ -2,9 +2,9 @@
 
 <?php echo $form->create('Membro',array('action'=>'membrosCongregacao'));?>
 <?php echo $form->input('congregacao_id',array('empty'=>'.:: SELECIONE ::.')); ?>
-<input type="submit" value="Pesquisar"> <? if ($this->data){ ?> <input type="button" value="Imprimir" style="width:180px" onclick="javascript: window.location.href='<? echo $html->url(array('controller'=>'membros','action'=>'membrosCongregacaoPdf','congregacao_id'=>$this->data['Membro']['congregacao_id'])) ?>'">  <?}?>
+<input type="submit" value="Pesquisar"> <?php if ($this->data){ ?> <input type="button" value="Imprimir" style="width:180px" onclick="javascript: window.location.href='<?php echo $html->url(array('controller'=>'membros','action'=>'membrosCongregacaoPdf','congregacao_id'=>$this->data['Membro']['congregacao_id'])) ?>'">  <?}?>
 <?php echo $form->end();?>
-<?= $paginator->options(array('url' => array('congregacao_id'=>$congregacao_id)));?>
+<?php echo $paginator->options(array('url' => array('congregacao_id'=>$congregacao_id)));?>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th width="50px"><?php echo $paginator->sort('id');?></th>
@@ -25,13 +25,13 @@ foreach ($membros as $membro):
 		<td style="text-align:center">
 			<?php echo str_pad($membro['Membro']['id'],4,0,STR_PAD_LEFT); ?>
 		</td>
-		<td title="<? echo $membro['Membro']['nome'] ?>">
+		<td title="<?php echo $membro['Membro']['nome'] ?>">
 			<?php echo substr($membro['Membro']['nome'],0,20).(strlen($membro['Membro']['nome'])>20?'...':''); ?>
 		</td>
-		<td style="text-align:center" title="<? echo $membro['Congregacao']['nome'] ?>">
+		<td style="text-align:center" title="<?php echo $membro['Congregacao']['nome'] ?>">
 			<?php echo substr($membro['Congregacao']['nome'],0,8).(strlen($membro['Congregacao']['nome'])>8?'...':''); ?>
 		</td>
-		<td style="text-align:center" title="<? echo $membro['Funcao']['nome'] ?>">
+		<td style="text-align:center" title="<?php echo $membro['Funcao']['nome'] ?>">
 			<?php echo substr($membro['Funcao']['nome'],0,8).(strlen($membro['Funcao']['nome'])>8?'...':''); ?>
 		</td>
 		<td class="actions">

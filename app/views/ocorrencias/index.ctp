@@ -1,6 +1,6 @@
 <?php $session->flash(); ?>
-<input type="button" value="Novo" onclick="javascript:window.location.href='<?= $html->url(array('controller'=>'ocorrencias','action'=>'add','id'=>$membro['Membro']['id'])) ?>'">
-<?= $paginator->options(array('url' => array('id'=>$membro['Membro']['id'])));?>
+<input type="button" value="Novo" onclick="javascript:window.location.href='<?php echo $html->url(array('controller'=>'ocorrencias','action'=>'add','id'=>$membro['Membro']['id'])) ?>'">
+<?php echo $paginator->options(array('url' => array('id'=>$membro['Membro']['id'])));?>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th width="50px"><?php echo $paginator->sort('id');?></th>

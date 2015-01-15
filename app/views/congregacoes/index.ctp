@@ -1,11 +1,11 @@
 <div class="congregacoes index">
 <h1 class="title"><b>Cadastros</b> >> Congregações</h1>
 <?php $session->flash(); ?>
-<? echo $form->create('Congregacao',array('action'=>'index')); ?>
+<?php echo $form->create('Congregacao',array('action'=>'index')); ?>
 		<?php echo $form->input('nome', array('size'=>'40','maxlength'=>'255')); ?>
-		<input type="submit" value="Pesquisar"> <input type="button" value="Novo" onclick="javascript:window.location.href='<?= $html->url(array('controller'=>'congregacoes','action'=>'add')) ?>'">
-<? echo $form->end() ?>
-<?= $paginator->options(array('url' => array('nome'=>$nome)));?>
+		<input type="submit" value="Pesquisar"> <input type="button" value="Novo" onclick="javascript:window.location.href='<?php echo $html->url(array('controller'=>'congregacoes','action'=>'add')) ?>'">
+<?php echo $form->end() ?>
+<?php echo $paginator->options(array('url' => array('nome'=>$nome)));?>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th width="50px"><?php echo $paginator->sort('id');?></th>

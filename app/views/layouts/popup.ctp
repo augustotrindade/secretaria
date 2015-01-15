@@ -24,7 +24,7 @@ body {
 </style>
 </head>
 <body>
-<?
+<?php
 echo $content_for_layout;
 ?> 
 

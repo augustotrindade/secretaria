@@ -1,4 +1,4 @@
-<?
+<?php
 $fpdf->cabecalho = false;
 $fpdf->rodape = false;
 

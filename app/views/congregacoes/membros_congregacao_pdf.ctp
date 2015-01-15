@@ -1,4 +1,4 @@
-<?
+<?php
 $fpdf->cabecalho_rodape = false;
 $fpdf->SetFont('Arial','',7);
 

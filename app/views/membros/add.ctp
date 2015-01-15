@@ -7,7 +7,7 @@ jQuery(function($){
 $(document).ready(function(){
 	$(".uf").change(function(){
 		var SelcCidade = this.id;
-		$.post("<? echo $html->url(array('action'=>'cidadesXml')); ?>", {uf: $("#"+SelcCidade).val()}, function(xml){
+		$.post("<?php echo $html->url(array('action'=>'cidadesXml')); ?>", {uf: $("#"+SelcCidade).val()}, function(xml){
 			$("."+SelcCidade).html('');
 			var opt = '';
 			opt += '<option value="">.:: SELECIONE ::.</option>';
@@ -19,14 +19,14 @@ $(document).ready(function(){
 	});
 });
 </script>
-<h1 class="title"><b><?= $html->link('Cadastros',array('controller'=>'membros','action'=>'index')) ?></b> >> Membros</h1>
+<h1 class="title"><b><?php echo $html->link('Cadastros',array('controller'=>'membros','action'=>'index')) ?></b> >> Membros</h1>
 <?php $session->flash(); ?>
 <div class="membros form">
 <?php echo $form->create('Membro',array('action'=>'salvar','enctype'=>'multipart/form-data'));?>
-<? echo $form->input('id'); ?>
+<?php echo $form->input('id'); ?>
 <?php echo $form->input('foto', array('type'=>'hidden','id'=>'foto')); ?>
 <?php echo $form->input('upload', array('type'=>'hidden','id'=>'upload','value'=>'false')); ?>
-<div onclick="window.open('<?php echo $html->url(array('controller'=>'foto','action'=>'index','id'=>$this->data['Membro']['id'])); ?>','page','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=600');return false;">
+<div onclick="window.open('<?php echo $html->url(array('controller'=>'foto','action'=>'index',(isset($this->data['Membro']['id']) ? $this->data['Membro']['id'] : '' ))); ?>','page','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=600');return false;">
 <?php echo $html->image('/fotos_cartao/'.($this->data['Membro']['foto'] ? $this->data['Membro']['foto'] : 'sem_foto.gif'),array('width'=>'100px','border'=>'1px','id'=>'imgFoto')); ?>
 </div>
 
@@ -74,14 +74,14 @@ $(document).ready(function(){
 	<?php echo $form->input('data_batismo_espirito', array('size'=>'20','maxlength'=>'10','label'=>'Data Batismo Espírito')); ?>
 	<?php echo $form->input('situacao',array('type'=>'hidden')); ?>
 </fieldset>
-<? if (isset($this->data['Membro']['id'])){ ?>
+<?php if (isset($this->data['Membro']['id'])){ ?>
 <fieldset>
 	<legend>Histórico</legend>
 	<?php echo $html->link('Consagrações',array('controller'=>'consagracoes','action'=>'index','id'=>$this->data['Membro']['id']),array('onclick'=>"window.open(this.href,'page','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=600,height=400');return false;")); ?><br>
 	<?php echo $html->link('Ocorrencias',array('controller'=>'ocorrencias','action'=>'index','id'=>$this->data['Membro']['id']),array('onclick'=>"window.open(this.href,'page2','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=600,height=400');return false;")); ?>
 </fieldset>
-<? } ?>
-			<input type="submit" value="Salvar"> <input type="button" value="Voltar" onclick="javascript:window.location.href='<?= $html->url(array('controller'=>'membros','action'=>'index')) ?>'">
+<?php } ?>
+			<input type="submit" value="Salvar"> <input type="button" value="Voltar" onclick="javascript:window.location.href='<?php echo $html->url(array('controller'=>'membros','action'=>'index')) ?>'">
 		</tr>
 	</table>
 <?php echo $form->end();?>

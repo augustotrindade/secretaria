@@ -3,7 +3,7 @@
 <?php echo $form->create('Membro',array('action'=>'aniversariantes'));?>
 <?php echo $form->input('data', array('type'=>'date','dateFormat' => 'M','empty'=>'.:: SELECIONE ::.','label'=>'Mês')); ?>
 <?php echo $form->input('congregacao_id',array('empty'=>'.:: SELECIONE ::.','label'=>'Congregação')); ?>
-<input type="submit" value="Pesquisar"> <? if ($this->data){ ?> <input type="button" value="Imprimir Cartas" style="width:180px" onclick="javascript: window.location.href='<? echo $html->url(array('controller'=>'membros','action'=>'aniversariantesCarta','mes'=>$this->data['Membro']['data']['month'],'congregacao_id'=>$this->data['Membro']['congregacao_id'])) ?>'">  <?}?>
+<input type="submit" value="Pesquisar"> <?php if ($this->data){ ?> <input type="button" value="Imprimir Cartas" style="width:180px" onclick="javascript: window.location.href='<?php echo $html->url(array('controller'=>'membros','action'=>'aniversariantesCarta','mes'=>$this->data['Membro']['data']['month'],'congregacao_id'=>$this->data['Membro']['congregacao_id'])) ?>'">  <?php }?>
 <?php echo $form->end();?>
 <table cellpadding="0" cellspacing="0">
 <tr>
@@ -15,7 +15,7 @@
 </tr>
 <?php
 $i = 0;
-foreach ($membros as $membro):
+foreach ($membros as $membro) {
 	$class = null;
 	if ($i++ % 2 != 0) {
 		$class = ' class="altrow"';
@@ -38,5 +38,5 @@ foreach ($membros as $membro):
 			<?php echo $membro['Congregacao']['nome']; ?>
 		</td>
 	</tr>
-<?php endforeach; ?>
+<?php } ?>
 </table>
