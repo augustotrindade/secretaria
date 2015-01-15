@@ -22,92 +22,109 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<?php echo $html->charset(); ?>
-	<title>.:: Sistema de Gestão de Membros ::.</title>
-	<?php
-		echo $html->meta('icon');
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+		<?php echo $html->charset(); ?>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>.:: Sistema de Gestão de Membros ::.</title>
+		
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<?php
+			echo $html->meta('icon');
+	
+			echo $html->css('bootstrap.min');
+			echo $html->css('bootstrap-theme.min');
+			echo $html->css('jquery.fancybox-1.2.6.css');
+			echo $html->css('main');
+	
+			echo $html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
+			
+			echo $scripts_for_layout;
+			
+			$logado = $session->read('logado');
+		?>
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+	</head>
+	<body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-		echo $html->css('default');
-		echo $html->css('jquery.fancybox-1.2.6.css');
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Gerenciamento de Igreja</a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+        	<ul class="nav navbar-nav navbar-right">
+        		<li><?php echo $html->link('Index',array('controller'=>'login','action'=>'home')) ?></li>
+        		<li class="dropdown">
+        			<?php echo $html->link('Cadastros','#',array('class'=>'dropdown-toggle','data-toggle'=>'dropdown','role'=>'button','aria-expanded'=>'false')) ?>
+        			<ul class="dropdown-menu" role="menu">
+        				<?php if ($logado['admin']==true) { ?>
+        				<li><?php echo $html->link('Usuários',array('controller'=>'usuarios','action'=>'index')) ?></li>
+        				<li><?php echo $html->link('Cidades',array('controller'=>'cidades','action'=>'index')) ?></li>
+						<li><?php echo $html->link('Funções',array('controller'=>'funcoes','action'=>'index')) ?></li>
+						<li><?php echo $html->link('Congregações',array('controller'=>'congregacoes','action'=>'index')) ?></li>
+						<li><?php echo $html->link('Situações',array('controller'=>'situacoes','action'=>'index')) ?></li>
+						<?php } ?>
+						<li><?php echo $html->link('Membros',array('controller'=>'membros','action'=>'index')) ?></li>
+        			</ul>
+        		</li>
+        		<li class="dropdown">
+        			<?php echo $html->link('Relatórios','#',array('class'=>'dropdown-toggle','data-toggle'=>'dropdown','role'=>'button','aria-expanded'=>'false')) ?>
+        			<ul class="dropdown-menu" role="menu">
+        				<li><?php echo $html->link('Aniversariantes',array('controller'=>'membros','action'=>'aniversariantes')) ?></li>
+						<li><?php echo $html->link('Membros/Congregação',array('controller'=>'congregacoes','action'=>'membrosCongregacao')) ?></li>
+        			</ul>
+        		</li>
+        		<li><?php echo $html->link('Mudar Senha',array('controller'=>'login','action'=>'mudar_senha')) ?></li>
+				<li><?php echo $html->link('Sair',array('controller'=>'login','action'=>'sair')) ?></li>
+        	</ul>
+        </div>
+        
+      </div>
+    </div>
 
-		echo $scripts_for_layout;
-		if (isset($javascript)) {
-			echo $javascript->link('jquery'); 
-			echo $javascript->link('jquery.maskedinput');
-			echo $javascript->link('jquery_fancybox-1.2.6.js'); 
-			echo $javascript->link('jquery_fancybox-1.2.6.pack.js'); 
-		}
-		$logado = $session->read('logado');
-	?>
-</head>
-<body>
-<!-- start header -->
-<div id="header">
-	<div id="logo">
-	</div>
-</div>
-<!-- end header -->
-<div id="wrapper">
-	<!-- start page -->
-	<div id="page">
-	<div id="page-bgtop">
-	<div id="page-bgbtm">
-		<div id="sidebar1" class="sidebar">
-			<ul>
-				<li>
-					<h2><?= $html->link('Index',array('controller'=>'login','action'=>'home')) ?></h2>
-				</li>
-				<li>
-					<h2>CADASTROS</h2>
-					<ul>
-						<? if ($logado['admin']==true) { ?>
-						<li><?= $html->link('Usuários',array('controller'=>'usuarios','action'=>'index')) ?></li>
-						<li><?= $html->link('Cidades',array('controller'=>'cidades','action'=>'index')) ?></li>
-						<li><?= $html->link('Funções',array('controller'=>'funcoes','action'=>'index')) ?></li>
-						<li><?= $html->link('Congregações',array('controller'=>'congregacoes','action'=>'index')) ?></li>
-						<li><?= $html->link('Situações',array('controller'=>'situacoes','action'=>'index')) ?></li>
-						<? } ?>
-						<li><?= $html->link('Membros',array('controller'=>'membros','action'=>'index')) ?></li>
-					</ul>
-				</li>
-				<li>
-					<h2>RELATÓRIOS</h2>
-					<ul>
-						<li><?= $html->link('Aniversariantes',array('controller'=>'membros','action'=>'aniversariantes')) ?></li>
-						<li><?= $html->link('Membros/Congregação',array('controller'=>'congregacoes','action'=>'membrosCongregacao')) ?></li>
-					</ul>
-				</li>
-				<li>
-					<h2><?= $html->link('Mudar Senha',array('controller'=>'login','action'=>'mudar_senha')) ?></h2>
-				</li>
-				<li>
-					<h2><?= $html->link('Sair',array('controller'=>'login','action'=>'sair')) ?></h2>
-				</li>
-			</ul>
-		</div>
-		<!-- start content -->
-		<div id="content">
-			<div class="flower"></div>
-			<div class="post">
+    <div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<?php echo $session->flash(); ?>
 				<?php echo $content_for_layout; ?>
 			</div>
 		</div>
-		<!-- end content -->
-		
-		<div style="clear: both;">&nbsp;</div>
 	</div>
-	</div>
-	</div>
-	<!-- end page -->
-</div>
-<div id="menu">
-	<center><br>Copyright &copy; Assembléia de Deus. Todos os direitos reservados</center>
-</div>
-<div id="footer">
-
-</div>
+	<footer>
+		<p>Copyright &copy; Assembléia de Deus. Todos os direitos reservados</p>
+	</footer>
+	
+	<?php
+	echo $html->script('vendor/jquery-1.11.0.min',array('javascriptlink'));
+	echo $html->script('vendor/bootstrap.min',array('javascriptlink'));
+	echo $html->script('plugins',array('javascriptlink'));
+	echo $html->script('main',array('javascriptlink'));
+	?>			
 </body>
 </html>
+
+
+
+

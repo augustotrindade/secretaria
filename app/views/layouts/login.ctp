@@ -22,52 +22,59 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<?php echo $html->charset(); ?>
-	<title>.:: Sistema de Gestão de Membros ::.</title>
-	<?php
-		echo $html->meta('icon');
-
-		echo $html->css('default');
-
-		echo $scripts_for_layout;
-	?>
-</head>
-<body>
-<!-- start header -->
-<div id="header">
-	<div id="logo">
-	</div>
-</div>
-<!-- end header -->
-<div id="wrapper">
-	<!-- start page -->
-	<div id="page">
-	<div id="page-bgtop">
-	<div id="page-bgbtm">
-		<!-- start content -->
-		<div id="content">
-			<div class="flower"></div>
-			<div class="post">
-				<?php echo $content_for_layout; ?>
-			</div>
-		</div>
-		<!-- end content -->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+		<?php echo $html->charset(); ?>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>.:: Sistema de Gestão de Membros ::.</title>
 		
-		<div style="clear: both;">&nbsp;</div>
-	</div>
-	</div>
-	</div>
-	<!-- end page -->
-</div>
-<div id="menu">
-	<center><br>Copyright &copy; Assembléia de Deus. Todos os direitos reservados</center>
-</div>
-<div id="footer">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<?php
+			echo $html->meta('icon');
+	
+			echo $html->css('bootstrap.min');
+			echo $html->css('bootstrap-theme.min');
+			echo $html->css('login');
+			echo $html->css('main');
+	
+			echo $html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
+			
+			echo $scripts_for_layout;
+		?>
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+	</head>
+	<body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+	
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Gerenciamento de Igreja</a>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <div class="container">
+    
+		<?php echo $content_for_layout; ?>
 
+	</div>
+	
+	<footer>
+		<p>Copyright &copy; Assembléia de Deus. Todos os direitos reservados</p>
+	</footer>			
 </body>
 </html>

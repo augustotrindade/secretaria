@@ -1,26 +1,22 @@
 <div class="usuarios index">
-<h1 class="title"><b>Cadastros</b> >> Usuários</h1>
-<?php $session->flash(); ?>
+<h1><b>Cadastros</b> >> Usuários</h1>
+
 <?php echo $form->create('Usuario',array('action'=>'index')); ?>
-		<?php echo $form->input('nome', array('size'=>'40','maxlength'=>'255')); ?>
-		<input type="submit" value="Pesquisar"> <input type="button" value="Novo" onclick="javascript:window.location.href='<?= $html->url(array('controller'=>'usuarios','action'=>'add')) ?>'">
+<?php echo $form->input('nome', array('size'=>'40','maxlength'=>'255')); ?>
+<input type="submit" value="Pesquisar"> 
+<input type="button" value="Novo" onclick="javascript:window.location.href='<?php echo $html->url(array('controller'=>'usuarios','action'=>'add')) ?>'">
 <?php echo $form->end() ?>
 <?php echo $paginator->options(array('url' => array('nome'=>$nome)));?>
-<table cellpadding="0" cellspacing="0">
+<table class="table table-striped" >
 <tr>
 	<th width="50px"><?php echo $paginator->sort('id');?></th>
 	<th><?php echo $paginator->sort('nome');?></th>
-	<th width="160px" class="actions"><?php __('Actions');?></th>
+	<th width="60px" class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
-$i = 0;
-foreach ($usuarios as $usuario):
-	$class = null;
-	if ($i++ % 2 != 0) {
-		$class = ' class="altrow"';
-	}
+foreach ($usuarios as $usuario) {
 ?>
-	<tr<?php echo $class;?>>
+	<tr>
 		<td>
 			<?php echo $usuario['Usuario']['id']; ?>
 		</td>
@@ -28,11 +24,11 @@ foreach ($usuarios as $usuario):
 			<?php echo $usuario['Usuario']['nome']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Editar', true), array('action'=>'edit', $usuario['Usuario']['id'])); ?>
-			<?php echo $html->link(__('Excluir', true), array('action'=>'delete', $usuario['Usuario']['id']), null, sprintf(__('Tem certeza que deseja excluir o item # %s?', true), $usuario['Usuario']['id'])); ?>
+			<?php echo $html->link('', array('action'=>'edit', $usuario['Usuario']['id']),array('class'=>'glyphicon glyphicon-pencil')); ?>
+			<?php echo $html->link('', array('action'=>'delete', $usuario['Usuario']['id']),array('class'=>'glyphicon glyphicon-remove'), sprintf(__('Tem certeza que deseja excluir o item # %s?', true), $usuario['Usuario']['id'])); ?>
 		</td>
 	</tr>
-<?php endforeach; ?>
+<?php } ?>
 </table>
 </div>
 
