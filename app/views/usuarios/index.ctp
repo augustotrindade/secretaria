@@ -1,12 +1,31 @@
-<div class="usuarios index">
-<h1><b>Cadastros</b> >> Usuários</h1>
+<div class="page-header position-relative">
+	<h1>
+		Usuários 
+		<small>
+			<i class="icon-double-angle-right"></i>
+			Lista de usuários
+		</small>
+	</h1>
+</div>
 
-<?php echo $form->create('Usuario',array('action'=>'index')); ?>
-<?php echo $form->input('nome', array('size'=>'40','maxlength'=>'255')); ?>
-<input type="submit" value="Pesquisar"> 
-<input type="button" value="Novo" onclick="javascript:window.location.href='<?php echo $html->url(array('controller'=>'usuarios','action'=>'add')) ?>'">
-<?php echo $form->end() ?>
-<?php echo $paginator->options(array('url' => array('nome'=>$nome)));?>
+<div class="row-fluid">
+	<div class="span12">
+		<?php 
+			echo $this->FormAce->create('Usuario',array('action'=>'index','class'=>'form-horizontal'));
+			echo $this->FormAce->input('nome', array('size'=>'40','maxlength'=>'255'));
+		?>
+		<div class="form-actions">
+			<?php echo $this->FormAce->submit('Pesquisar',array('class'=>'btn btn-success','div'=>false));?>
+			&nbsp;&nbsp;&nbsp;
+			<input class="btn btn-info" type="button" value="Novo" onclick="javascript:window.location.href='<?php echo $this->Html->url(array('controller'=>'usuarios','action'=>'add')) ?>'">
+		</div>
+		<?php 
+			echo $this->FormAce->end(); 
+			echo $this->Paginator->options(array('url' => array('nome'=>$nome)));
+		?>
+	</div>
+</div>
+
 <table class="table table-striped" >
 <tr>
 	<th width="50px"><?php echo $paginator->sort('id');?></th>

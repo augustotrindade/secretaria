@@ -23,108 +23,170 @@
  */
 ?>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-		<?php echo $html->charset(); ?>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8" />
 		<title>.:: Sistema de Gestão de Membros ::.</title>
-		
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="description" content="overview &amp; stats" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!--basic styles-->
+
 		<?php
-			echo $html->meta('icon');
+			echo $this->Html->meta('icon');
 	
-			echo $html->css('bootstrap.min');
-			echo $html->css('bootstrap-theme.min');
-			echo $html->css('jquery.fancybox-1.2.6.css');
-			echo $html->css('main');
+			echo $this->Html->css('bootstrap.min');
+			echo $this->Html->css('bootstrap-responsive.min');
+			echo $this->Html->css('font-awesome.min');
+			echo $this->Html->css('main');
+			//echo $this->Html->css('jquery.fancybox-1.2.6.css');
 	
-			echo $html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
+			echo $this->Html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
 			
 			echo $scripts_for_layout;
 			
-			$logado = $session->read('logado');
+			$logado = $this->Session->read('logado');
 		?>
-        <style>
-            body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
-        </style>
-	</head>
+		<!--[if IE 7]>
+		  <?php echo $this->Html->css('font-awesome-ie7.min'); ?>
+		<![endif]-->
+
+		<!--page specific plugin styles-->
+
+		<!--fonts-->
+
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+		<!--ace styles-->
+
+		<?php 
+		echo $this->Html->css('ace.min');
+		echo $this->Html->css('ace-responsive.min');
+		echo $this->Html->css('ace-skins.min');
+		?>
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  <?php echo $this->Html->css('ace-ie.min'); ?>
+		<![endif]-->
+
+		<!--inline styles related to this page-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
 	<body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a href="#" class="brand">
+						<small>
+							<i class="icon-leaf"></i>
+							Sistema de Gerenciamento de Igreja
+						</small>
+					</a>
+					
+					<ul class="nav ace-nav pull-right">
+						<?php if ( isset($logado) ) { ?>
+						<li class="light-blue">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<?php echo $this->Html->image('logo_ad', array('class'=>'nav-user-photo', 'alt'=>$logado['nome'])) ?>
+								<span class="user-info">
+									<small>Bem-vindo,</small>
+									<?php echo $logado['nome']?>
+									<i class="icon-caret-down"></i>
+								</span>
+							</a>
+							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+								<li>
+									<a href="#">
+										<i class="icon-cog"></i>
+										Configurações
+									</a>
+								</li>
 
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Gerenciamento de Igreja</a>
-        </div>
-        
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-        	<ul class="nav navbar-nav navbar-right">
-        		<li><?php echo $html->link('Index',array('controller'=>'login','action'=>'home')) ?></li>
-        		<li class="dropdown">
-        			<?php echo $html->link('Cadastros','#',array('class'=>'dropdown-toggle','data-toggle'=>'dropdown','role'=>'button','aria-expanded'=>'false')) ?>
-        			<ul class="dropdown-menu" role="menu">
-        				<?php if ($logado['admin']==true) { ?>
-        				<li><?php echo $html->link('Usuários',array('controller'=>'usuarios','action'=>'index')) ?></li>
-        				<li><?php echo $html->link('Cidades',array('controller'=>'cidades','action'=>'index')) ?></li>
-						<li><?php echo $html->link('Funções',array('controller'=>'funcoes','action'=>'index')) ?></li>
-						<li><?php echo $html->link('Congregações',array('controller'=>'congregacoes','action'=>'index')) ?></li>
-						<li><?php echo $html->link('Situações',array('controller'=>'situacoes','action'=>'index')) ?></li>
+								<li>
+									<a href="#">
+										<i class="icon-user"></i>
+										Perfil
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<?php echo $this->Html->link('<i class="icon-off"></i>Sair',array('controller'=>'login','action'=>'sair'),array('escape'=>false)) ?>
+								</li>
+							</ul>
+						</li>
 						<?php } ?>
-						<li><?php echo $html->link('Membros',array('controller'=>'membros','action'=>'index')) ?></li>
-        			</ul>
-        		</li>
-        		<li class="dropdown">
-        			<?php echo $html->link('Relatórios','#',array('class'=>'dropdown-toggle','data-toggle'=>'dropdown','role'=>'button','aria-expanded'=>'false')) ?>
-        			<ul class="dropdown-menu" role="menu">
-        				<li><?php echo $html->link('Aniversariantes',array('controller'=>'membros','action'=>'aniversariantes')) ?></li>
-						<li><?php echo $html->link('Membros/Congregação',array('controller'=>'congregacoes','action'=>'membrosCongregacao')) ?></li>
-        			</ul>
-        		</li>
-        		<li><?php echo $html->link('Mudar Senha',array('controller'=>'login','action'=>'mudar_senha')) ?></li>
-				<li><?php echo $html->link('Sair',array('controller'=>'login','action'=>'sair')) ?></li>
-        	</ul>
-        </div>
-        
-      </div>
-    </div>
-
-    <div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<?php echo $session->flash(); ?>
-				<?php echo $content_for_layout; ?>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-	<footer>
-		<p>Copyright &copy; Assembléia de Deus. Todos os direitos reservados</p>
-	</footer>
-	
-	<?php
-	echo $html->script('vendor/jquery-1.11.0.min',array('javascriptlink'));
-	echo $html->script('vendor/bootstrap.min',array('javascriptlink'));
-	echo $html->script('plugins',array('javascriptlink'));
-	echo $html->script('main',array('javascriptlink'));
-	?>			
-</body>
+		
+		<div class="main-container container-fluid">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						&nbsp;
+					</div>
+
+				</div><!--#sidebar-shortcuts-->
+				
+				<ul class="nav nav-list">
+					<li>
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-desktop"></i>
+							<span class="menu-text"> Secretaria </span>
+
+							<b class="arrow icon-angle-down"></b>
+						</a>
+						<ul class="submenu">
+							<li>
+								<a href="elements.html">
+									<i class="icon-double-angle-right"></i>
+									Cadastro
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul><!--/.nav-list-->
+				<div class="sidebar-collapse" id="sidebar-collapse">
+					<i class="icon-double-angle-left"></i>
+				</div>
+			</div>
+			<div class="main-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+				
+				</div>
+				<div class="page-content">
+					<?php echo $this->Session->flash(); ?>
+					<?php echo $content_for_layout; ?>
+				</div>
+			</div>
+		</div>
+		<!--basic scripts-->
+		<?php 
+			echo $this->Html->script('jquery-2.0.3.min',array('javascriptlink'));
+			echo $this->Html->script('bootstrap.min',array('javascriptlink'));
+		?>
+		<!--[if lte IE 8]>
+		  <?php echo $this->Html->script('excanvas.min',array('javascriptlink'));?>
+		<![endif]-->
+		<?php 
+			echo $this->Html->script('jquery-ui-1.10.3.custom.min',array('javascriptlink'));
+			echo $this->Html->script('jquery.ui.touch-punch.min',array('javascriptlink'));
+			echo $this->Html->script('jquery.slimscroll.min',array('javascriptlink'));
+			echo $this->Html->script('jquery.easy-pie-chart',array('javascriptlink'));
+			echo $this->Html->script('jquery.sparkline.min',array('javascriptlink'));
+			echo $this->Html->script('flot/jquery.flot.min',array('javascriptlink'));
+			echo $this->Html->script('flot/jquery.flot.pie.min',array('javascriptlink'));
+			echo $this->Html->script('flot/jquery.flot.resize.min',array('javascriptlink'));
+			echo $this->Html->script('ace-elements.min',array('javascriptlink'));
+			echo $this->Html->script('ace.min',array('javascriptlink'));
+			
+		?>
+	</body>
 </html>
-
-
-
-
