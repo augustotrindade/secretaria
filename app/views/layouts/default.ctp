@@ -42,7 +42,7 @@
 			echo $this->Html->css('main');
 			//echo $this->Html->css('jquery.fancybox-1.2.6.css');
 	
-			echo $this->Html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
+			//echo $this->Html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
 			
 			echo $scripts_for_layout;
 			
@@ -113,7 +113,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<?php echo $this->Html->link('<i class="icon-off"></i>Sair',array('controller'=>'login','action'=>'sair'),array('escape'=>false)) ?>
+									<?php echo $this->Html->link('<i class="icon-off"></i> Sair',array('controller'=>'login','action'=>'sair'),array('escape'=>false)) ?>
 								</li>
 							</ul>
 						</li>
@@ -145,10 +145,16 @@
 						</a>
 						<ul class="submenu">
 							<li>
-								<a href="elements.html">
+								<a href="#" class="dropdown-toggle">
 									<i class="icon-double-angle-right"></i>
 									Cadastro
+									<b class="arrow icon-angle-down"></b>
 								</a>
+								<ul class="submenu">
+									<li>
+										<?php echo $this->Html->link('<i class="icon-cog"></i> Usuários',array('controller'=>'usuarios','action'=>'index'),array('escape'=>false)); ?>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</li>
@@ -179,7 +185,7 @@
 			echo $this->Html->script('jquery-ui-1.10.3.custom.min',array('javascriptlink'));
 			echo $this->Html->script('jquery.ui.touch-punch.min',array('javascriptlink'));
 			echo $this->Html->script('jquery.slimscroll.min',array('javascriptlink'));
-			echo $this->Html->script('jquery.easy-pie-chart',array('javascriptlink'));
+			echo $this->Html->script('jquery.easy-pie-chart.min',array('javascriptlink'));
 			echo $this->Html->script('jquery.sparkline.min',array('javascriptlink'));
 			echo $this->Html->script('flot/jquery.flot.min',array('javascriptlink'));
 			echo $this->Html->script('flot/jquery.flot.pie.min',array('javascriptlink'));

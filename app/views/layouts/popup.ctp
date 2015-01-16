@@ -11,10 +11,10 @@ echo $html->css('jquery.fancybox-1.2.6.css');
 
 echo $scripts_for_layout;
 if (isset($javascript)) {
-	echo $javascript->link('jquery'); 
-	echo $javascript->link('jquery.maskedinput');
-	echo $javascript->link('jquery_fancybox-1.2.6.js'); 
-	echo $javascript->link('jquery_fancybox-1.2.6.pack.js'); 
+	echo $this->Html->script('jquery-2.0.3.min',array('javascriptlink'));
+	//echo $javascript->link('jquery.maskedinput');
+	//echo $javascript->link('jquery_fancybox-1.2.6.js'); 
+	//echo $javascript->link('jquery_fancybox-1.2.6.pack.js'); 
 }
 ?>
 <style>
