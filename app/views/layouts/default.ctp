@@ -88,7 +88,7 @@
 						<?php if ( isset($logado) ) { ?>
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<?php echo $this->Html->image('logo_ad', array('class'=>'nav-user-photo', 'alt'=>$logado['nome'])) ?>
+								<?php echo $this->Html->image('logo_ad.jpg', array('class'=>'nav-user-photo', 'alt'=>$logado['nome'])) ?>
 								<span class="user-info">
 									<small>Bem-vindo,</small>
 									<?php echo $logado['nome']?>

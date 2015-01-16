@@ -1,4 +1,5 @@
 <?php
+App::import('Helper','Form');
 class FormAceHelper extends FormHelper {
 	
 	function input($fieldName, $options = array()) {

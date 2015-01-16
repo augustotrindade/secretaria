@@ -5,12 +5,12 @@
  * PHP versions 4 and 5
  *
  * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
- * Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  *	Licensed under The Open Group Test Suite License
  *	Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @copyright     Copyright 2005-2012, Cake Software Foundation, Inc. (http://cakefoundation.org)
  * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
  * @package       cake
  * @subpackage    cake.tests.cases.libs
@@ -74,6 +74,8 @@ class RouterTest extends CakeTestCase {
 	function testFullBaseURL() {
 		$this->assertPattern('/^http(s)?:\/\//', Router::url('/', true));
 		$this->assertPattern('/^http(s)?:\/\//', Router::url(null, true));
+		$this->assertPattern('/^http(s)?:\/\//', Router::url(array('full_base' => true)));
+		$this->assertIdentical(FULL_BASE_URL . '/', Router::url(array('full_base' => true)));
 	}
 
 /**
@@ -1511,6 +1513,10 @@ class RouterTest extends CakeTestCase {
 		$result = Router::url(array('action' => 'protected_edit', 1, 'protected' => true));
 		$expected = '/protected/images/edit/1';
 		$this->assertEqual($result, $expected);
+		
+		$result = Router::url(array('action' => 'protectededit', 1, 'protected' => true));
+		$expected = '/protected/images/protectededit/1';
+		$this->assertEqual($result, $expected);
 
 		$result = Router::url(array('action' => 'edit', 1, 'protected' => true));
 		$expected = '/protected/images/edit/1';
@@ -1702,8 +1708,8 @@ class RouterTest extends CakeTestCase {
 	function testParsingWithPatternOnAction() {
 		Router::reload();
 		Router::connect(
-			'/blog/:action/*', 
-			array('controller' => 'blog_posts'), 
+			'/blog/:action/*',
+			array('controller' => 'blog_posts'),
 			array('action' => 'other|actions')
 		);
 		$result = Router::parse('/blog/other');
@@ -1725,7 +1731,7 @@ class RouterTest extends CakeTestCase {
 			'named' => array()
 		);
 		$this->assertEqual($expected, $result);
-		
+
 		$result = Router::url(array('controller' => 'blog_posts', 'action' => 'foo'));
 		$this->assertEqual('/blog_posts/foo', $result);
 
@@ -2529,26 +2535,39 @@ class CakeRouteTestCase extends CakeTestCase {
 	}
 
 /**
+ * Test protocol relative urls.
+ *
+ * @return void
+ */
+	function testProtocolUrls() {
+		$url = 'svn+ssh://example.com';
+		$this->assertEqual($url, Router::url($url));
+
+		$url = '://example.com';
+		$this->assertEqual($url, Router::url($url));
+	}
+
+/**
  * test that patterns work for :action
  *
  * @return void
  */
 	function testPatternOnAction() {
 		$route =& new CakeRoute(
-			'/blog/:action/*', 
-			array('controller' => 'blog_posts'), 
+			'/blog/:action/*',
+			array('controller' => 'blog_posts'),
 			array('action' => 'other|actions')
 		);
 		$result = $route->match(array('controller' => 'blog_posts', 'action' => 'foo'));
 		$this->assertFalse($result);
-		
+
 		$result = $route->match(array('controller' => 'blog_posts', 'action' => 'actions'));
 		$this->assertTrue($result);
-		
+
 		$result = $route->parse('/blog/other');
 		$expected = array('controller' => 'blog_posts', 'action' => 'other', 'pass' => array(), 'named' => array());
 		$this->assertEqual($expected, $result);
-		
+
 		$result = $route->parse('/blog/foobar');
 		$this->assertFalse($result);
 	}
