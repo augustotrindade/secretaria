@@ -26,7 +26,7 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8" />
-		<title>.:: Sistema de Gestão de Membros - Login ::.</title>
+		<title>.:: Sistema de Gerenciamento de Igreja - Login ::.</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,9 +83,9 @@
 								<div class="center">
 									<h1>
 										<i class="icon-leaf green"></i>
-										<span class="white">Gerenciamento</span>
+										<span class="white">SGI</span>
 									</h1>
-									<h4 class="blue">de Igreja</h4>
+									<h4 class="blue">Serranópolis</h4>
 								</div>
 							</div>
 							<div class="space-6"></div>

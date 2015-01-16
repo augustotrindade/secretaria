@@ -26,7 +26,7 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8" />
-		<title>.:: Sistema de Gestão de Membros ::.</title>
+		<title>.:: Sistema de Gerenciamento de Igreja ::.</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,17 +35,17 @@
 
 		<?php
 			echo $this->Html->meta('icon');
-	
+
 			echo $this->Html->css('bootstrap.min');
 			echo $this->Html->css('bootstrap-responsive.min');
 			echo $this->Html->css('font-awesome.min');
 			echo $this->Html->css('main');
 			//echo $this->Html->css('jquery.fancybox-1.2.6.css');
-	
+
 			//echo $this->Html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
-			
+
 			echo $scripts_for_layout;
-			
+
 			$logado = $this->Session->read('logado');
 		?>
 		<!--[if IE 7]>
@@ -60,7 +60,7 @@
 
 		<!--ace styles-->
 
-		<?php 
+		<?php
 		echo $this->Html->css('ace.min');
 		echo $this->Html->css('ace-responsive.min');
 		echo $this->Html->css('ace-skins.min');
@@ -80,10 +80,10 @@
 					<a href="#" class="brand">
 						<small>
 							<i class="icon-leaf"></i>
-							Sistema de Gerenciamento de Igreja
+							SGI - Serranópolis
 						</small>
 					</a>
-					
+
 					<ul class="nav ace-nav pull-right">
 						<?php if ( isset($logado) ) { ?>
 						<li class="light-blue">
@@ -122,7 +122,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="main-container container-fluid">
 			<a class="menu-toggler" id="menu-toggler" href="#">
 				<span class="menu-text"></span>
@@ -134,7 +134,7 @@
 					</div>
 
 				</div><!--#sidebar-shortcuts-->
-				
+
 				<ul class="nav nav-list">
 					<li>
 						<a href="#" class="dropdown-toggle">
@@ -165,7 +165,7 @@
 			</div>
 			<div class="main-content">
 				<div class="breadcrumbs" id="breadcrumbs">
-				
+
 				</div>
 				<div class="page-content">
 					<?php echo $this->Session->flash(); ?>
@@ -174,14 +174,14 @@
 			</div>
 		</div>
 		<!--basic scripts-->
-		<?php 
+		<?php
 			echo $this->Html->script('jquery-2.0.3.min',array('javascriptlink'));
 			echo $this->Html->script('bootstrap.min',array('javascriptlink'));
 		?>
 		<!--[if lte IE 8]>
 		  <?php echo $this->Html->script('excanvas.min',array('javascriptlink'));?>
 		<![endif]-->
-		<?php 
+		<?php
 			echo $this->Html->script('jquery-ui-1.10.3.custom.min',array('javascriptlink'));
 			echo $this->Html->script('jquery.ui.touch-punch.min',array('javascriptlink'));
 			echo $this->Html->script('jquery.slimscroll.min',array('javascriptlink'));
@@ -192,7 +192,7 @@
 			echo $this->Html->script('flot/jquery.flot.resize.min',array('javascriptlink'));
 			echo $this->Html->script('ace-elements.min',array('javascriptlink'));
 			echo $this->Html->script('ace.min',array('javascriptlink'));
-			
+
 		?>
 	</body>
 </html>

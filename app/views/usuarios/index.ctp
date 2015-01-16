@@ -1,16 +1,8 @@
-<div class="page-header position-relative">
-	<h1>
-		Usuários 
-		<small>
-			<i class="icon-double-angle-right"></i>
-			Lista de usuários
-		</small>
-	</h1>
-</div>
+<?php echo $this->element('page_header', array('title' => 'Usuários', 'sub_title'=>'Lista de usuários')); ?>
 
 <div class="row-fluid">
 	<div class="span12">
-		<?php 
+		<?php
 			echo $this->FormAce->create('Usuario',array('action'=>'index','class'=>'form-horizontal'));
 			echo $this->FormAce->input('nome', array('size'=>'40','maxlength'=>'255'));
 		?>
@@ -19,8 +11,8 @@
 			&nbsp;&nbsp;&nbsp;
 			<input class="btn btn-info" type="button" value="Novo" onclick="javascript:window.location.href='<?php echo $this->Html->url(array('controller'=>'usuarios','action'=>'add')) ?>'">
 		</div>
-		<?php 
-			echo $this->FormAce->end(); 
+		<?php
+			echo $this->FormAce->end();
 			echo $this->Paginator->options(array('url' => array('nome'=>$nome)));
 		?>
 	</div>
