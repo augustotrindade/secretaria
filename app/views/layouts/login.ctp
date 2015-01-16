@@ -35,17 +35,17 @@
 
 		<?php
 			echo $this->Html->meta('icon');
-	
+
 			echo $this->Html->css('bootstrap.min');
 			echo $this->Html->css('bootstrap-responsive.min');
 			echo $this->Html->css('font-awesome.min');
 			echo $this->Html->css('main');
 			//echo $this->Html->css('jquery.fancybox-1.2.6.css');
-	
+
 			echo $this->Html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
-			
+
 			echo $scripts_for_layout;
-			
+
 			$logado = $this->Session->read('logado');
 		?>
 		<!--[if IE 7]>
@@ -60,7 +60,7 @@
 
 		<!--ace styles-->
 
-		<?php 
+		<?php
 		echo $this->Html->css('ace.min');
 		echo $this->Html->css('ace-responsive.min');
 		echo $this->Html->css('ace-skins.min');
@@ -73,38 +73,40 @@
 		<!--inline styles related to this page-->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
-	<body>
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container-fluid">
-					<a href="#" class="brand">
-						<small>
-							<i class="icon-leaf"></i>
-							Sistema de Gerenciamento de Igreja
-						</small>
-					</a>
-				</div>
-			</div>
-		</div>
-		
+	<body class="login-layout">
 		<div class="main-container container-fluid">
-			<div class="breadcrumbs" id="breadcrumbs">
-			
+			<div class="main-content">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="login-container">
+							<div class="row-fluid">
+								<div class="center">
+									<h1>
+										<i class="icon-leaf green"></i>
+										<span class="white">Gerenciamento</span>
+									</h1>
+									<h4 class="blue">de Igreja</h4>
+								</div>
+							</div>
+							<div class="space-6"></div>
+							<?php echo $session->flash(); ?>
+							<?php echo $content_for_layout; ?>
+						</div>
+					</div><!--/.span-->
+				</div><!--/.row-fluid-->
 			</div>
-			<div class="page-content">
-				<?php echo $session->flash(); ?>
-				<?php echo $content_for_layout; ?>
-			</div>
-		</div>
+		</div><!--/.main-container-->
+
+
 		<!--basic scripts-->
-		<?php 
+		<?php
 			echo $this->Html->script('jquery-2.0.3.min',array('javascriptlink'));
 			echo $this->Html->script('bootstrap.min',array('javascriptlink'));
 		?>
 		<!--[if lte IE 8]>
 		  <?php echo $this->Html->script('excanvas.min',array('javascriptlink'));?>
 		<![endif]-->
-		<?php 
+		<?php
 			echo $this->Html->script('jquery-ui-1.10.3.custom.min',array('javascriptlink'));
 			echo $this->Html->script('jquery.ui.touch-punch.min',array('javascriptlink'));
 			echo $this->Html->script('jquery.slimscroll.min',array('javascriptlink'));
@@ -115,7 +117,7 @@
 			echo $this->Html->script('flot/jquery.flot.resize.min',array('javascriptlink'));
 			echo $this->Html->script('ace-elements.min',array('javascriptlink'));
 			echo $this->Html->script('ace.min',array('javascriptlink'));
-			
+
 		?>
 	</body>
 </html>
