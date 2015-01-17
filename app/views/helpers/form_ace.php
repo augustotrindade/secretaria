@@ -11,6 +11,14 @@ class FormAceHelper extends FormHelper {
 		
 		return parent::input($fieldName, $options);
 	}
+	
+// 	function checkbox($fieldName, $options = array()) {
+// 		$output = parent::input($fieldName, array('label'=>false,'div'=>false));
+// 		$output = $this->Html->tag('label',$output);
+// 		$output = $this->Html->tag('div',$output,array('class'=>'controls'));
+// 		$output = $this->Html->tag('div',$output,array('class'=>'control-group'));
+// 		return $output;
+// 	}
 }
 
 ?>
