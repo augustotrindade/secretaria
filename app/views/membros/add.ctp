@@ -1,3 +1,5 @@
+<?php echo $this->element('page_header', array('title' => 'Secretaria', 'sub_title'=>'Cadastro de membros')); ?>
+
 <script>
 jQuery(document).ready(function(){
 	jQuery(function($){
@@ -18,8 +20,6 @@ jQuery(document).ready(function(){
 	});
 });
 </script>
-
-<?php echo $this->element('page_header', array('title' => 'Secretaria', 'sub_title'=>'Cadastro de membros')); ?>
 
 <div class="row-fluid">
 	<div class="span12">

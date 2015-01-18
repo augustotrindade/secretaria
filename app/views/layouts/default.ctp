@@ -55,7 +55,7 @@
 		<!--page specific plugin styles-->
 
 		<!--fonts-->
-
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
 
 		<!--ace styles-->
 
@@ -135,11 +135,10 @@
 				</div><!--#sidebar-shortcuts-->
 
 				<ul class="nav nav-list">
-					<li>
+					<li class="active">
 						<a href="#" class="dropdown-toggle">
 							<i class="icon-desktop"></i>
 							<span class="menu-text"> Secretaria </span>
-
 							<b class="arrow icon-angle-down"></b>
 						</a>
 						<ul class="submenu">
@@ -161,6 +160,37 @@
 								<a href="#" class="dropdown-toggle">
 									<i class="icon-double-angle-right"></i>
 									Relatório
+									<b class="arrow icon-angle-down"></b>
+								</a>
+								<ul class="submenu">
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Aniversariantes',array('controller'=>'membros','action'=>'aniversariantes'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Membros/Congregações',array('controller'=>'congregacoes','action'=>'membrosCongregacao'),array('escape'=>false)); ?></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="active">
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-desktop"></i>
+							<span class="menu-text"> Tesouraria </span>
+							<b class="arrow icon-angle-down"></b>
+						</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" class="dropdown-toggle">
+									<i class="icon-double-angle-right"></i>
+									Entrada
+									<b class="arrow icon-angle-down"></b>
+								</a>
+								<ul class="submenu">
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Usuários',array('controller'=>'usuarios','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Cidades',array('controller'=>'cidades','action'=>'index'),array('escape'=>false)); ?></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" class="dropdown-toggle">
+									<i class="icon-double-angle-right"></i>
+									Saídas
 									<b class="arrow icon-angle-down"></b>
 								</a>
 								<ul class="submenu">
