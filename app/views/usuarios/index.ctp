@@ -1,14 +1,13 @@
-<?php echo $this->element('page_header', array('title' => 'Usuários', 'sub_title'=>'Lista de usuários')); ?>
+<?php echo $this->element('page_header', array('title' => 'Secretaria', 'sub_title'=>'Lista de usuários')); ?>
 
 <div class="row-fluid">
 	<div class="span12">
 		<?php
-			echo $this->FormAce->create('Usuario',array('action'=>'index','class'=>'form-horizontal'));
+			echo $this->FormAce->create('Usuario',array('action'=>'index'));
 			echo $this->FormAce->input('nome', array('size'=>'40','maxlength'=>'255'));
 		?>
 		<div class="form-actions">
 			<?php echo $this->FormAce->submit('Pesquisar',array('class'=>'btn btn-success','div'=>false));?>
-			&nbsp;&nbsp;&nbsp;
 			<input class="btn btn-info" type="button" value="Novo" onclick="javascript:window.location.href='<?php echo $this->Html->url(array('controller'=>'usuarios','action'=>'add')) ?>'">
 		</div>
 		<?php
@@ -41,8 +40,8 @@
 					</td>
 					<td class="actions">
 						<ul class="inline">
-							<li><?php echo $this->Html->link('<i class="icon-edit"></i>', array('controller'=>'usuarios','action'=>'edit', $usuario['Usuario']['id']),array('class'=>'btn btn-mini btn-info','escape'=>false)); ?></li>
-							<li><?php echo $this->Html->link('<i class="icon-trash"></i>', array('controller'=>'usuarios','action'=>'delete', $usuario['Usuario']['id']),array('class'=>'btn btn-mini btn-danger','escape'=>false), sprintf(__('Tem certeza que deseja excluir o item # %s?', true), $usuario['Usuario']['id'])); ?></li>
+							<?php echo $this->Html->link('<i class="icon-edit"></i>', array('controller'=>'usuarios','action'=>'edit', $usuario['Usuario']['id']),array('class'=>'btn btn-mini btn-info','escape'=>false)); ?>
+							<?php echo $this->Html->link('<i class="icon-trash"></i>', array('controller'=>'usuarios','action'=>'delete', $usuario['Usuario']['id']),array('class'=>'btn btn-mini btn-danger','escape'=>false), sprintf(__('Tem certeza que deseja excluir o item # %s?', true), $usuario['Usuario']['id'])); ?>
 						</ul>
 					</td>
 				</tr>

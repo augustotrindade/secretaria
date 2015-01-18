@@ -73,7 +73,7 @@
 		<!--inline styles related to this page-->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
-	<body class="login-layout">
+	<body class="login-layout skin-1">
 		<div class="main-container container-fluid">
 			<div class="main-content">
 				<div class="row-fluid">

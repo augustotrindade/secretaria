@@ -43,7 +43,7 @@
 			//echo $this->Html->css('jquery.fancybox-1.2.6.css');
 
 			//echo $this->Html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
-
+			echo $this->Html->script('jquery-2.0.3.min',array('javascriptlink'));
 			echo $scripts_for_layout;
 
 			$logado = $this->Session->read('logado');
@@ -56,7 +56,6 @@
 
 		<!--fonts-->
 
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
 
 		<!--ace styles-->
 
@@ -73,11 +72,11 @@
 		<!--inline styles related to this page-->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
-	<body>
-		<div class="navbar">
+	<body class="skin-1">
+		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
-					<a href="#" class="brand">
+					<a href="<?php echo $this->Html->url(array('controller'=>'login','action'=>'home')) ?>" class="brand">
 						<small>
 							<i class="icon-leaf"></i>
 							SGI - Serranópolis
@@ -127,7 +126,7 @@
 			<a class="menu-toggler" id="menu-toggler" href="#">
 				<span class="menu-text"></span>
 			</a>
-			<div class="sidebar" id="sidebar">
+			<div class="sidebar fixed" id="sidebar">
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
 						&nbsp;
@@ -151,9 +150,22 @@
 									<b class="arrow icon-angle-down"></b>
 								</a>
 								<ul class="submenu">
-									<li>
-										<?php echo $this->Html->link('<i class="icon-cog"></i> Usuários',array('controller'=>'usuarios','action'=>'index'),array('escape'=>false)); ?>
-									</li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Usuários',array('controller'=>'usuarios','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Cidades',array('controller'=>'cidades','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Funções',array('controller'=>'funcoes','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Congregações',array('controller'=>'congregacoes','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Membros',array('controller'=>'membros','action'=>'index'),array('escape'=>false)); ?></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" class="dropdown-toggle">
+									<i class="icon-double-angle-right"></i>
+									Relatório
+									<b class="arrow icon-angle-down"></b>
+								</a>
+								<ul class="submenu">
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Aniversariantes',array('controller'=>'membros','action'=>'aniversariantes'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Membros/Congregações',array('controller'=>'congregacoes','action'=>'membrosCongregacao'),array('escape'=>false)); ?></li>
 								</ul>
 							</li>
 						</ul>
@@ -175,7 +187,6 @@
 		</div>
 		<!--basic scripts-->
 		<?php
-			echo $this->Html->script('jquery-2.0.3.min',array('javascriptlink'));
 			echo $this->Html->script('bootstrap.min',array('javascriptlink'));
 		?>
 		<!--[if lte IE 8]>
@@ -192,7 +203,8 @@
 			echo $this->Html->script('flot/jquery.flot.resize.min',array('javascriptlink'));
 			echo $this->Html->script('ace-elements.min',array('javascriptlink'));
 			echo $this->Html->script('ace.min',array('javascriptlink'));
-
+			echo $this->Html->script('jquery.maskedinput.min',array('javascriptlink'));
 		?>
+		
 	</body>
 </html>

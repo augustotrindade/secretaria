@@ -172,7 +172,7 @@ class MembrosController extends AppController {
 		$this->layout = 'xml/default';
 		$uf = isset($this->params['form']['uf']) ? $this->params['form']['uf'] : null;
 		if ($uf!=null) {
-			$this->set('cidades',$this->Cidade->find('list',array('conditions'=>array('Cidade.uf'=>$uf))));
+			$this->set('cidades',$this->Cidade->find('list',array('conditions'=>array('Cidade.uf'=>$uf),'order'=>'Cidade.nome')));
 		}
 	}
 	
