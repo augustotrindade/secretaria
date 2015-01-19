@@ -149,10 +149,12 @@
 									<b class="arrow icon-angle-down"></b>
 								</a>
 								<ul class="submenu">
+									<?php if($logado['admin']){ ?>
 									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Usuários',array('controller'=>'usuarios','action'=>'index'),array('escape'=>false)); ?></li>
 									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Cidades',array('controller'=>'cidades','action'=>'index'),array('escape'=>false)); ?></li>
 									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Funções',array('controller'=>'funcoes','action'=>'index'),array('escape'=>false)); ?></li>
 									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Congregações',array('controller'=>'congregacoes','action'=>'index'),array('escape'=>false)); ?></li>
+									<?php } ?>
 									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Membros',array('controller'=>'membros','action'=>'index'),array('escape'=>false)); ?></li>
 								</ul>
 							</li>
@@ -183,8 +185,8 @@
 									<b class="arrow icon-angle-down"></b>
 								</a>
 								<ul class="submenu">
-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Usuários',array('controller'=>'usuarios','action'=>'index'),array('escape'=>false)); ?></li>
-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Cidades',array('controller'=>'cidades','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Dizímos/Ofertas',array('controller'=>'entradas','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Ofertas Alçadas',array('controller'=>'entradas','action'=>'alcadas'),array('escape'=>false)); ?></li>
 								</ul>
 							</li>
 							<li>
@@ -209,9 +211,10 @@
 				<div class="breadcrumbs" id="breadcrumbs">
 
 				</div>
+				<?php echo $this->Session->flash(); ?>
 				<div class="page-content">
-					<?php echo $this->Session->flash(); ?>
 					<?php echo $content_for_layout; ?>
+					<?php echo $this->element ( 'sql_dump' ); ?>
 				</div>
 			</div>
 		</div>

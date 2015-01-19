@@ -138,10 +138,10 @@ if (count($membros)>0) {
 		//ASSINATURAS
 		$fpdf->SetFont('avantg','',9);
 		$fpdf->SetXY(153,$y+64);
-		$fpdf->Cell(40,6,utf8_decode('Augusto Claudio S Trindade'),0,0,'C');
-		$fpdf->SetXY(112,$y+64);
+		$fpdf->Cell(40,6,utf8_decode('Secretário'),0,0,'C');
+		$fpdf->SetXY(111,$y+64);
 		//$fpdf->Image('img/ass_cleosmar.gif',112,$y+54,30);
-		$fpdf->Cell(40,6,utf8_decode('Pr Josue'),0,0,'C');
+		$fpdf->Cell(40,6,utf8_decode('Pr Cleosmar de Almeida'),0,0,'C');
 		
 		$y+=65;
 		$contador++;

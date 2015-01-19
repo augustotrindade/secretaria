@@ -1,17 +1,22 @@
+<style>
+img {
+	max-width: none;
+}
+</style>
 <?php 
-echo $html->css('imgareaselect-animated.css');
+echo $this->Html->css('imgareaselect-animated.css');
 if(isset($javascript)){
 	echo $javascript->link('jquery.imgareaselect.js');
 }
 $width = 150;
 $height = 150;
 
-echo $form->create('', array('action' => 'finalizar',"enctype" => "multipart/form-data"));
-echo $form->input('membro',array('type'=>'hidden'));
-echo $form->hidden('name');
-echo $cropimage->createJavaScript($uploaded['imageWidth'],$uploaded['imageHeight'],$width,$height);
-echo $cropimage->createForm($uploaded["imagePath"], $width, $height);
-echo $form->submit('Salvar', array("id"=>"save_thumb"));
-echo $form->end();
+echo $this->Form->create('', array('action' => 'finalizar',"enctype" => "multipart/form-data"));
+echo $this->Form->input('membro',array('type'=>'hidden'));
+echo $this->Form->hidden('name');
+echo $this->Cropimage->createJavaScript($uploaded['imageWidth'],$uploaded['imageHeight'],$width,$height);
+echo $this->Cropimage->createForm($uploaded["imagePath"], $width, $height);
+echo $this->Form->submit('Salvar', array("id"=>"save_thumb"));
+echo $this->Form->end();
 
 ?> 

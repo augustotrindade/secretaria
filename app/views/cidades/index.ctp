@@ -15,41 +15,37 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<table class="table table-striped table-bordered table-hover" >
-			<tr>
-				<th width="50px"><?php echo $this->Paginator->sort('id');?></th>
-				<th><?php echo $this->Paginator->sort('nome');?></th>
-				<th><?php echo $this->Paginator->sort('uf');?></th>
-				<th width="90px" class="actions"><?php __('Actions');?></th>
-			</tr>
-			<?php
-			foreach ($cidades as $cidade) {
-			?>
-			<tr>
-				<td>
-					<?php echo $cidade['Cidade']['id']; ?>
-				</td>
-				<td>
-					<?php echo $cidade['Cidade']['nome']; ?>
-				</td>
-				<td style="text-align:center">
-					<?php echo $cidade['Cidade']['uf']; ?>
-				</td>
-				<td class="actions">
-					<ul class="inline">
-						<?php echo $this->Html->link('<i class="icon-edit"></i>', array('action'=>'edit', $cidade['Cidade']['id']),array('class'=>'btn btn-mini btn-info','escape'=>false)); ?>
-						<?php echo $this->Html->link('<i class="icon-trash"></i>', array('action'=>'delete', $cidade['Cidade']['id']),array('class'=>'btn btn-mini btn-danger','escape'=>false), sprintf(__('Tem certeza que deseja excluir o item # %s?', true), $cidade['Cidade']['id'])); ?>
-					</ul>
-				</td>
-			</tr>
-			<?php } ?>
-		</table>
+		<div class="dataTables_wrapper" role="grid">
+			<table class="table table-striped table-bordered table-hover" >
+				<tr>
+					<th width="50px"><?php echo $this->Paginator->sort('id');?></th>
+					<th><?php echo $this->Paginator->sort('nome');?></th>
+					<th><?php echo $this->Paginator->sort('uf');?></th>
+					<th width="90px" class="actions"><?php __('Actions');?></th>
+				</tr>
+				<?php
+				foreach ($cidades as $cidade) {
+				?>
+				<tr>
+					<td>
+						<?php echo $cidade['Cidade']['id']; ?>
+					</td>
+					<td>
+						<?php echo $cidade['Cidade']['nome']; ?>
+					</td>
+					<td style="text-align:center">
+						<?php echo $cidade['Cidade']['uf']; ?>
+					</td>
+					<td class="actions">
+						<ul class="inline">
+							<?php echo $this->Html->link('<i class="icon-edit"></i>', array('action'=>'edit', $cidade['Cidade']['id']),array('class'=>'btn btn-mini btn-info','escape'=>false)); ?>
+							<?php echo $this->Html->link('<i class="icon-trash"></i>', array('action'=>'delete', $cidade['Cidade']['id']),array('class'=>'btn btn-mini btn-danger','escape'=>false), sprintf(__('Tem certeza que deseja excluir o item # %s?', true), $cidade['Cidade']['id'])); ?>
+						</ul>
+					</td>
+				</tr>
+				<?php } ?>
+			</table>
+			<?php echo $this->element('paginate')?>
+		</div>
 	</div>
 </div>
-
-<div class="paging">
-	<?php echo $this->Paginator->prev('<< '.__('Anterior', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $this->Paginator->numbers();?>
-	<?php echo $this->Paginator->next(__('Próximo', true).' >>', array(), null, array('class'=>'disabled'));?>
-</div>
-

@@ -1,5 +1,5 @@
 <?php 
-/* App schema generated on: 2015-01-16 17:13:27 : 1421435607*/
+/* App schema generated on: 2015-01-19 01:05:17 : 1421636717*/
 class AppSchema extends CakeSchema {
 	var $name = 'App';
 
@@ -10,12 +10,28 @@ class AppSchema extends CakeSchema {
 	function after($event = array()) {
 	}
 
+	var $centro_custos = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'nome' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 100, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'created' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'updated' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'nome' => array('column' => 'nome', 'unique' => 1)),
+		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
+	);
 	var $cidades = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
 		'nome' => array('type' => 'string', 'null' => false, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'uf' => array('type' => 'string', 'null' => false, 'length' => 2, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
+		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
+	);
+	var $conferentes = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'membro_id' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'entrada_id' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'tesoureiro' => array('type' => 'boolean', 'null' => false, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -39,6 +55,39 @@ class AppSchema extends CakeSchema {
 		'nome_pastor' => array('type' => 'string', 'null' => false, 'default' => NULL, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
+		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
+	);
+	var $dizimos = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'membro_id' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'entrada_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
+		'nome' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 200, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'valor' => array('type' => 'float', 'null' => false, 'default' => NULL, 'length' => '12,2'),
+		'created' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'entrada_id' => array('column' => 'entrada_id', 'unique' => 0)),
+		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
+	);
+	var $entradas = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'congregacao_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
+		'usuario_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
+		'numero_talao' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'oferta' => array('type' => 'float', 'null' => false, 'default' => NULL, 'length' => '12,2'),
+		'dizimo' => array('type' => 'float', 'null' => false, 'default' => NULL, 'length' => '12,2'),
+		'data' => array('type' => 'date', 'null' => false, 'default' => NULL),
+		'created' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'updated' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'congregacao_id' => array('column' => 'congregacao_id', 'unique' => 0), 'usuario_id' => array('column' => 'usuario_id', 'unique' => 0)),
+		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
+	);
+	var $fornecedores = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'razao_social' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 200, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'nome_fantasia' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 200, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'cpf_cnpj' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 14, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'created' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'updated' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -98,6 +147,21 @@ class AppSchema extends CakeSchema {
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'updated' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
+		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
+	);
+	var $saidas = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'congregacao_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
+		'centro_custo_id' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'fornecedor_id' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'usuario_id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'index'),
+		'data' => array('type' => 'date', 'null' => false, 'default' => NULL),
+		'valor' => array('type' => 'float', 'null' => false, 'default' => NULL, 'length' => '12,2'),
+		'descricao' => array('type' => 'string', 'null' => false, 'default' => NULL, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'numero_nf' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 100, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'created' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'updated' => array('type' => 'datetime', 'null' => false, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'id' => array('column' => 'id', 'unique' => 0), 'usuario_id' => array('column' => 'usuario_id', 'unique' => 0), 'congregacao_id' => array('column' => 'congregacao_id', 'unique' => 0)),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
 	var $situacoes = array(

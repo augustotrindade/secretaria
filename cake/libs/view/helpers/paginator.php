@@ -655,7 +655,8 @@ class PaginatorHelper extends AppHelper {
 					. $separator;
 			}
 
-			$out .= $this->Html->tag($tag, $params['page'], array('class' => 'current'));
+			$out .= $this->Html->tag($tag, '<a>'.$params['page'].'</a>', array('class' => 'active'));
+			
 			if ($i != $params['pageCount']) {
 				$out .= $separator;
 			}
