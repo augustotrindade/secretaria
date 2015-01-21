@@ -82,7 +82,7 @@
 							<div class="row-fluid">
 								<div class="center">
 									<h1>
-										<i class="icon-leaf green"></i>
+										<i class="icon-group green"></i>
 										<span class="white">SGI</span>
 									</h1>
 									<h4 class="blue">Serranópolis</h4>

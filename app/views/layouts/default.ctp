@@ -56,6 +56,7 @@
 
 		<!--fonts-->
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<!--ace styles-->
 
@@ -78,7 +79,7 @@
 				<div class="container-fluid">
 					<a href="<?php echo $this->Html->url(array('controller'=>'login','action'=>'home')) ?>" class="brand">
 						<small>
-							<i class="icon-leaf"></i>
+							<i class="icon-group"></i>
 							SGI - Serranópolis
 						</small>
 					</a>
