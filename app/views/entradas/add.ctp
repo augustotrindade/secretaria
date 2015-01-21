@@ -13,7 +13,7 @@
 
 		<div id="ajax_dizimistas">
 			<?php
-			if(count($this->data['Dizimo'])>0){
+			if(isset($this->data['Dizimo']) && count($this->data['Dizimo'])>0){
 				foreach ($this->data['Dizimo'] as $key => $value) {
 					echo $this->element('dizimos/add',array('pos'=>$key));
 				}

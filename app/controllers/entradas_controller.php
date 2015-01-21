@@ -38,7 +38,9 @@ class EntradasController extends AppController {
 					$this->redirect(array('action'=>'index'));
 				} else {
 					$this->Session->setFlash(__('Não foi possível salvar. Tente novamente.', true));
-					$this->redirect(array('action'=>'edit','id'=>$id));
+					$congregacoes = $this->Entrada->Congregacao->find('list');
+					$this->set(compact('congregacoes'));
+					$this->render ( 'add' );
 				}
 			}
 		}
