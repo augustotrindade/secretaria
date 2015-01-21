@@ -202,7 +202,8 @@ $.imgAreaSelect = function (img, options) {
                     $.imgAreaSelect.onKeyPress = docKeyPress);
         }
 
-        if ($.browser.msie && $border.outerWidth() - $border.innerWidth() == 2) {
+        //if ($.browser.msie && $border.outerWidth() - $border.innerWidth() == 2) {
+	if (navigator.appVersion.indexOf("MSIE") && $border.outerWidth() - $border.innerWidth() == 2) {
             $border.css('margin', 0);
             setTimeout(function () { $border.css('margin', 'auto'); }, 0);
         }
@@ -602,7 +603,8 @@ $.imgAreaSelect = function (img, options) {
 
         $box.append($area.add($border).add($handles).add($areaOpera));
 
-        if ($.browser.msie) {
+        //if ($.browser.msie) {
+	if (navigator.appVersion.indexOf("MSIE")) {
             if (o = $outer.css('filter').match(/opacity=([0-9]+)/))
                 $outer.css('opacity', o[1]/100);
             if (o = $border.css('filter').match(/opacity=([0-9]+)/))
@@ -665,15 +667,17 @@ $.imgAreaSelect = function (img, options) {
 
     zIndex = options.zIndex || zIndex;
 
-    if ($.browser.msie)
+    //if ($.browser.msie)
+    if (navigator.appVersion.indexOf("MSIE"))
         $img.attr('unselectable', 'on');
 
-    $.imgAreaSelect.keyPress = $.browser.msie ||
+    //$.imgAreaSelect.keyPress = $.browser.msie ||
+    $.imgAreaSelect.keyPress = navigator.appVersion.indexOf("MSIE") ||
         $.browser.safari ? 'keydown' : 'keypress';
 
-    if ($.browser.opera)
-        $areaOpera = div().css({ width: '100%', height: '100%',
-            position: 'absolute', zIndex: zIndex + 2 || 2 });
+    //if ($.browser.opera)
+    //    $areaOpera = div().css({ width: '100%', height: '100%',
+    //        position: 'absolute', zIndex: zIndex + 2 || 2 });
 
     $box.add($outer).css({ visibility: 'hidden', position: position,
         overflow: 'hidden', zIndex: zIndex || '0' });
@@ -711,3 +715,4 @@ $.fn.imgAreaSelect = function (options) {
 };
 
 })(jQuery);
+

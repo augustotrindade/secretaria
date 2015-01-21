@@ -7,10 +7,10 @@ $logado = $session->read('logado');
 ?>
 		<div class="input">
 			<label>Usuário</label>
-			<b><?= $logado['nome']?></b>
+			<b><?php echo $logado['nome']?></b>
 		</div>
-		<?= $form->input('senha_antiga', array('type'=>'password', 'label'=>'Senha Atual'))?>
-		<?= $form->input('senha_nova1', array('type'=>'password', 'label'=>'Nova Senha','maxlength'=>6))?>
-		<?= $form->input('senha_nova2', array('type'=>'password', 'label'=>'Redigite a senha','maxlength'=>6))?>
+		<?php echo $form->input('senha_antiga', array('type'=>'password', 'label'=>'Senha Atual'))?>
+		<?php echo $form->input('senha_nova1', array('type'=>'password', 'label'=>'Nova Senha','maxlength'=>6))?>
+		<?php echo $form->input('senha_nova2', array('type'=>'password', 'label'=>'Redigite a senha','maxlength'=>6))?>
 		<input type="submit" value="Salvar">&nbsp;&nbsp;&nbsp;
-<?= $form->end() ?>
+<?php echo $form->end() ?>

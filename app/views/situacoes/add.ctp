@@ -1,12 +1,15 @@
-<h1 class="title"><b><?php echo $html->link('Cadastros',array('controller'=>'usuarios','action'=>'index')) ?></b> >> Situações</h1>
-<?php $session->flash(); ?>
-<div class="usuarios form">
-<?php echo $form->create('Situacao',array('action'=>'salvar'));?>
-<?php echo $form->input('id'); ?>
-			<?php echo $form->input('nome', array('size'=>'40','maxlength'=>'255')); ?>
-			<?php echo $form->input('ativo'); ?>
-			<input type="submit" value="Salvar"> <input type="button" value="Voltar" onclick="javascript:window.location.href='<?php echo $html->url(array('controller'=>'usuarios','action'=>'index')) ?>'">
-		</tr>
-	</table>
-<?php echo $form->end();?>
+<?php echo $this->element('page_header', array('title' => 'Secretaria', 'sub_title'=>'Cadastro de cidades')); ?>
+
+<div class="row-fluid">
+	<div class="span12">
+		<?php echo $this->FormAce->create('Situacao',array('action'=>'salvar'));?>
+		<?php echo $this->FormAce->input('id'); ?>
+		<?php echo $this->FormAce->input('nome', array('size'=>'40','maxlength'=>'255')); ?>
+		<?php echo $this->FormAce->checkbox('ativo'); ?>
+		<div class="form-actions">
+			<input type="submit" value="Salvar" class="btn btn-success">
+			<input type="button" value="Voltar" class="btn btn-info" onclick="javascript:window.location.href='<?php echo $this->Html->url(array('controller'=>'situacoes','action'=>'index')) ?>'">
+		</div>
+		<?php echo $this->FormAce->end();?>
+	</div>
 </div>

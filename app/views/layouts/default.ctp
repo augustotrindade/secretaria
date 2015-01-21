@@ -22,92 +22,223 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<?php echo $html->charset(); ?>
-	<title>.:: Sistema de Gestão de Membros ::.</title>
-	<?php
-		echo $html->meta('icon');
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8" />
+		<title>.:: Sistema de Gerenciamento de Igreja ::.</title>
 
-		echo $html->css('default');
-		echo $html->css('jquery.fancybox-1.2.6.css');
+		<meta name="description" content="overview &amp; stats" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		echo $scripts_for_layout;
-		if (isset($javascript)) {
-			echo $javascript->link('jquery'); 
-			echo $javascript->link('jquery.maskedinput');
-			echo $javascript->link('jquery_fancybox-1.2.6.js'); 
-			echo $javascript->link('jquery_fancybox-1.2.6.pack.js'); 
-		}
-		$logado = $session->read('logado');
-	?>
-</head>
-<body>
-<!-- start header -->
-<div id="header">
-	<div id="logo">
-	</div>
-</div>
-<!-- end header -->
-<div id="wrapper">
-	<!-- start page -->
-	<div id="page">
-	<div id="page-bgtop">
-	<div id="page-bgbtm">
-		<div id="sidebar1" class="sidebar">
-			<ul>
-				<li>
-					<h2><?= $html->link('Index',array('controller'=>'login','action'=>'home')) ?></h2>
-				</li>
-				<li>
-					<h2>CADASTROS</h2>
-					<ul>
-						<? if ($logado['admin']==true) { ?>
-						<li><?= $html->link('Usuários',array('controller'=>'usuarios','action'=>'index')) ?></li>
-						<li><?= $html->link('Cidades',array('controller'=>'cidades','action'=>'index')) ?></li>
-						<li><?= $html->link('Funções',array('controller'=>'funcoes','action'=>'index')) ?></li>
-						<li><?= $html->link('Congregações',array('controller'=>'congregacoes','action'=>'index')) ?></li>
-						<li><?= $html->link('Situações',array('controller'=>'situacoes','action'=>'index')) ?></li>
-						<? } ?>
-						<li><?= $html->link('Membros',array('controller'=>'membros','action'=>'index')) ?></li>
+		<!--basic styles-->
+
+		<?php
+			echo $this->Html->meta('icon');
+
+			echo $this->Html->css('bootstrap.min');
+			echo $this->Html->css('bootstrap-responsive.min');
+			echo $this->Html->css('font-awesome.min');
+			echo $this->Html->css('main');
+			//echo $this->Html->css('jquery.fancybox-1.2.6.css');
+
+			//echo $this->Html->script('vendor/modernizr-2.6.2-respond-1.1.0.min',array('javascriptlink'));
+			echo $this->Html->script('jquery-2.0.3.min',array('javascriptlink'));
+			echo $scripts_for_layout;
+
+			$logado = $this->Session->read('logado');
+		?>
+		<!--[if IE 7]>
+		  <?php echo $this->Html->css('font-awesome-ie7.min'); ?>
+		<![endif]-->
+
+		<!--page specific plugin styles-->
+
+		<!--fonts-->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<!--ace styles-->
+
+		<?php
+		echo $this->Html->css('ace.min');
+		echo $this->Html->css('ace-responsive.min');
+		echo $this->Html->css('ace-skins.min');
+		?>
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  <?php echo $this->Html->css('ace-ie.min'); ?>
+		<![endif]-->
+
+		<!--inline styles related to this page-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+	<body class="skin-1">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a href="<?php echo $this->Html->url(array('controller'=>'login','action'=>'home')) ?>" class="brand">
+						<small>
+							<i class="icon-group"></i>
+							SGI - Serranópolis
+						</small>
+					</a>
+
+					<ul class="nav ace-nav pull-right">
+						<?php if ( isset($logado) ) { ?>
+						<li class="light-blue">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<?php echo $this->Html->image('logo_ad.jpg', array('class'=>'nav-user-photo', 'alt'=>$logado['nome'])) ?>
+								<span class="user-info">
+									<small>Bem-vindo,</small>
+									<?php echo $logado['nome']?>
+									<i class="icon-caret-down"></i>
+								</span>
+							</a>
+							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+								<li>
+									<a href="#">
+										<i class="icon-cog"></i>
+										Configurações
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<i class="icon-user"></i>
+										Perfil
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<?php echo $this->Html->link('<i class="icon-off"></i> Sair',array('controller'=>'login','action'=>'sair'),array('escape'=>false)) ?>
+								</li>
+							</ul>
+						</li>
+						<?php } ?>
 					</ul>
-				</li>
-				<li>
-					<h2>RELATÓRIOS</h2>
-					<ul>
-						<li><?= $html->link('Aniversariantes',array('controller'=>'membros','action'=>'aniversariantes')) ?></li>
-						<li><?= $html->link('Membros/Congregação',array('controller'=>'congregacoes','action'=>'membrosCongregacao')) ?></li>
-					</ul>
-				</li>
-				<li>
-					<h2><?= $html->link('Mudar Senha',array('controller'=>'login','action'=>'mudar_senha')) ?></h2>
-				</li>
-				<li>
-					<h2><?= $html->link('Sair',array('controller'=>'login','action'=>'sair')) ?></h2>
-				</li>
-			</ul>
-		</div>
-		<!-- start content -->
-		<div id="content">
-			<div class="flower"></div>
-			<div class="post">
-				<?php echo $content_for_layout; ?>
+				</div>
 			</div>
 		</div>
-		<!-- end content -->
-		
-		<div style="clear: both;">&nbsp;</div>
-	</div>
-	</div>
-	</div>
-	<!-- end page -->
-</div>
-<div id="menu">
-	<center><br>Copyright &copy; Assembléia de Deus. Todos os direitos reservados</center>
-</div>
-<div id="footer">
 
-</div>
-</body>
+		<div class="main-container container-fluid">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+			<div class="sidebar fixed" id="sidebar">
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						&nbsp;
+					</div>
+
+				</div><!--#sidebar-shortcuts-->
+
+				<ul class="nav nav-list">
+					<li class="active">
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-desktop"></i>
+							<span class="menu-text"> Secretaria </span>
+							<b class="arrow icon-angle-down"></b>
+						</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" class="dropdown-toggle">
+									<i class="icon-double-angle-right"></i>
+									Cadastro
+									<b class="arrow icon-angle-down"></b>
+								</a>
+								<ul class="submenu">
+									<?php if($logado['admin']){ ?>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Usuários',array('controller'=>'usuarios','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Cidades',array('controller'=>'cidades','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Funções',array('controller'=>'funcoes','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Congregações',array('controller'=>'congregacoes','action'=>'index'),array('escape'=>false)); ?></li>
+									<?php } ?>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Membros',array('controller'=>'membros','action'=>'index'),array('escape'=>false)); ?></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" class="dropdown-toggle">
+									<i class="icon-double-angle-right"></i>
+									Relatório
+									<b class="arrow icon-angle-down"></b>
+								</a>
+								<ul class="submenu">
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Aniversariantes',array('controller'=>'membros','action'=>'aniversariantes'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Membros/Congregações',array('controller'=>'congregacoes','action'=>'membrosCongregacao'),array('escape'=>false)); ?></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="active">
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-desktop"></i>
+							<span class="menu-text"> Tesouraria </span>
+							<b class="arrow icon-angle-down"></b>
+						</a>
+						<ul class="submenu">
+							<li>
+								<a href="#" class="dropdown-toggle">
+									<i class="icon-double-angle-right"></i>
+									Entrada
+									<b class="arrow icon-angle-down"></b>
+								</a>
+								<ul class="submenu">
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Dizímos/Ofertas',array('controller'=>'entradas','action'=>'index'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Ofertas Alçadas',array('controller'=>'entradas','action'=>'alcadas'),array('escape'=>false)); ?></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" class="dropdown-toggle">
+									<i class="icon-double-angle-right"></i>
+									Saídas
+									<b class="arrow icon-angle-down"></b>
+								</a>
+								<ul class="submenu">
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Aniversariantes',array('controller'=>'membros','action'=>'aniversariantes'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Membros/Congregações',array('controller'=>'congregacoes','action'=>'membrosCongregacao'),array('escape'=>false)); ?></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul><!--/.nav-list-->
+				<div class="sidebar-collapse" id="sidebar-collapse">
+					<i class="icon-double-angle-left"></i>
+				</div>
+			</div>
+			<div class="main-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+
+				</div>
+				<?php echo $this->Session->flash(); ?>
+				<div class="page-content">
+					<?php echo $content_for_layout; ?>
+					<?php echo $this->element ( 'sql_dump' ); ?>
+				</div>
+			</div>
+		</div>
+		<!--basic scripts-->
+		<?php
+			echo $this->Html->script('bootstrap.min',array('javascriptlink'));
+		?>
+		<!--[if lte IE 8]>
+		  <?php echo $this->Html->script('excanvas.min',array('javascriptlink'));?>
+		<![endif]-->
+		<?php
+			echo $this->Html->script('jquery-ui-1.10.3.custom.min',array('javascriptlink'));
+			echo $this->Html->script('jquery.ui.touch-punch.min',array('javascriptlink'));
+			echo $this->Html->script('jquery.slimscroll.min',array('javascriptlink'));
+			echo $this->Html->script('jquery.easy-pie-chart.min',array('javascriptlink'));
+			echo $this->Html->script('jquery.sparkline.min',array('javascriptlink'));
+			echo $this->Html->script('flot/jquery.flot.min',array('javascriptlink'));
+			echo $this->Html->script('flot/jquery.flot.pie.min',array('javascriptlink'));
+			echo $this->Html->script('flot/jquery.flot.resize.min',array('javascriptlink'));
+			echo $this->Html->script('ace-elements.min',array('javascriptlink'));
+			echo $this->Html->script('ace.min',array('javascriptlink'));
+			echo $this->Html->script('jquery.maskedinput.min',array('javascriptlink'));
+		?>
+		
+	</body>
 </html>
