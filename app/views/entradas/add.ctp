@@ -8,13 +8,20 @@
 		<?php echo $this->FormAce->input('data', array('dateFormat' => 'DMY','separator' =>' / ','maxlength'=>'10','class'=>'input-small')); ?>
 		<?php echo $this->FormAce->input('numero_talao', array('maxlength'=>'10','label'=>'Número do talão')); ?>
 		<?php echo $this->FormAce->input('oferta'); ?>
-		
+
 		<h2>Dizimistas <button id="btn_add_dizimista" class="btn btn-info btn-mini" type="button"><i class="fa fa-plus"></i></button></h2>
-		
+
 		<div id="ajax_dizimistas">
+			<?php
+			if(count($this->data['Dizimo'])>0){
+				foreach ($this->data['Dizimo'] as $key => $value) {
+					echo $this->element('dizimos/add',array('pos'=>$key));
+				}
+			}
+			?>
 		</div>
 		<div class="form-actions">
-			<input type="submit" value="Salvar" class="btn btn-success"> 
+			<input type="submit" value="Salvar" class="btn btn-success">
 			<input type="button" value="Voltar" class="btn btn-info" onclick="javascript:window.location.href='<?php echo $this->Html->url(array('controller'=>'entradas','action'=>'index')) ?>'">
 		</div>
 		<?php echo $this->FormAce->end();?>

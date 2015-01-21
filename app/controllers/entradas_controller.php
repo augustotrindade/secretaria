@@ -14,15 +14,16 @@ class EntradasController extends AppController {
 		$congregacoes = $this->Entrada->Congregacao->find('list');
 		$this->set(compact('congregacoes'));
 	}
-	
+
 	function save($id = null) {
 		if (! $id) {
 			if (! empty ( $this->data )) {
-				if($this->Entrada->save ( $this->data )){
+				$this->Entrada->create();
+				if($this->Entrada->saveAll ( $this->data )){
 					$this->Session->setFlash ( __ ( 'Salvo com sucesso!', true ) );
 					$this->redirect ( array ('action' => 'index' ) );
 				} else {
-					$this->Session->setFlash ( __ ( 'Erro ao salvar!', true ) );
+					$this->Session->setFlash(__('Não foi possível salvar. Tente novamente.', true));
 					$congregacoes = $this->Entrada->Congregacao->find('list');
 					$this->set(compact('congregacoes'));
 					$this->render ( 'add' );
@@ -31,10 +32,18 @@ class EntradasController extends AppController {
 				$this->redirect ( array ('action' => 'add' ) );
 			}
 		} else {
-			
+			if (!empty($this->data)) {
+				if ($this->Entrada->saveAll($this->data)) {
+					$this->Session->setFlash(__('Salvo com sucesso!', true));
+					$this->redirect(array('action'=>'index'));
+				} else {
+					$this->Session->setFlash(__('Não foi possível salvar. Tente novamente.', true));
+					$this->redirect(array('action'=>'edit','id'=>$id));
+				}
+			}
 		}
 	}
-	
+
 	function edit($id = null) {
 		if (! $id && empty ( $this->data )) {
 			$this->Session->setFlash ( __ ( 'Inválido', true ) );
@@ -47,6 +56,6 @@ class EntradasController extends AppController {
 		$this->set(compact('congregacoes'));
 		$this->render ( 'add' );
 	}
-	
+
 }
 ?>
