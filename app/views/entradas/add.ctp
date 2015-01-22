@@ -38,10 +38,7 @@ jQuery(document).ready(function(){
 			url: url,
 			data: dados,
 			success: function(data){
-				var dt = new Date();
-				var div_id = 'dizimo_i_'+dt.getMinutes()+dt.getMilliseconds();
-				var result = jQuery('<div />').attr('id',div_id).append(data);
-				jQuery('#ajax_dizimistas').append(result);
+				jQuery('#ajax_dizimistas').append(data);
 			}
 		});
 	});

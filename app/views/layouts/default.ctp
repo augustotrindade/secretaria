@@ -138,7 +138,7 @@
 				<ul class="nav nav-list">
 					<li class="active">
 						<a href="#" class="dropdown-toggle">
-							<i class="icon-desktop"></i>
+							<i class="icon-tag"></i>
 							<span class="menu-text"> Secretaria </span>
 							<b class="arrow icon-angle-down"></b>
 						</a>
@@ -174,7 +174,7 @@
 					</li>
 					<li class="active">
 						<a href="#" class="dropdown-toggle">
-							<i class="icon-desktop"></i>
+							<i class="icon-list-alt"></i>
 							<span class="menu-text"> Tesouraria </span>
 							<b class="arrow icon-angle-down"></b>
 						</a>
