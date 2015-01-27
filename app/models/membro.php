@@ -6,6 +6,7 @@ class Membro extends AppModel {
 		'congregacao_id' => array('rule'=>array('numeric'),'message'=>'Este campo não pode estar em branco'),
 		'estado_civil' => array('rule'=>array('notempty'),'message'=>'Este campo não pode estar em branco'),
 		'funcao_id' => array('rule'=>array('numeric'),'message'=>'Este campo não pode estar em branco'),
+		'codigo' => array('rule'=>array('isUnique')),
 		'nome' => array('rule'=>array('notempty'),'message'=>'Este campo não pode estar em branco'),
 		'sexo' => array('rule'=>array('notempty'),'message'=>'Este campo não pode estar em branco'),
 		'data_nascimento' => array('rule'=>array('notempty'),'message'=>'Este campo não pode estar em branco'),

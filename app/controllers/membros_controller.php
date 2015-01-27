@@ -151,7 +151,12 @@ class MembrosController extends AppController {
 					$this->redirect(array('action'=>'index'));
 				} else {
 					$this->Session->setFlash(__('Não foi possível salvar. Tente novamente.', true));
-					$this->redirect(array('action'=>'edit','id'=>$id));
+					$this->set('estados',$this->Cidade->getEstados());
+					$this->set('congregacoes',$this->Congregacao->find('list'));//99572096
+					$this->set('funcoes',$this->Funcao->find('list'));
+					$this->set('cidades',$this->Cidade->find('list',array('conditions'=>array('uf'=>$this->data['Membro']['uf_nascimento']))));
+					$this->set('cidadesendereco',$this->Cidade->find('list',array('conditions'=>array('uf'=>$this->data['Membro']['uf_endereco']))));
+					$this->render('add');
 				}
 			}
 		}
