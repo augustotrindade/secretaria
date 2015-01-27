@@ -70,6 +70,9 @@ Cache::config('default', array('engine' => 'File'));
  *
  */
 CakePlugin::load('DebugKit');
+CakePlugin::loadAll(array(
+    'CakePtbr' => array('bootstrap' => true)
+));
 /**
  * To prefer app translation over plugin translation, you can set
  *
@@ -112,3 +115,4 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
