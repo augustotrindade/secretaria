@@ -1,63 +1,659 @@
-<?php
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Layouts
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-$cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
-?>
 <!DOCTYPE html>
-<html>
-<head>
-	<?php echo $this->Html->charset(); ?>
-	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $this->fetch('title'); ?>
-	</title>
-	<?php
-		echo $this->Html->meta('icon');
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Blank Page - Ace Admin</title>
 
-		echo $this->Html->css('cake.generic');
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
-	?>
-</head>
-<body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+		<!--basic styles-->
+		<?php
+			echo $this->Html->meta('icon');
+			echo $this->Html->css('bootstrap.min');
+			echo $this->Html->css('bootstrap-responsive.min');
+			echo $this->Html->css('font-awesome.min');
+			echo $this->fetch('meta');
+			echo $this->fetch('css');
+			echo $this->fetch('script');
+		?>
+
+		<!--[if IE 7]>
+		<?php
+			echo $this->Html->css('font-awesome-ie7.min');
+		?>
+		<![endif]-->
+
+		<!--page specific plugin styles-->
+
+		<?php
+			echo $this->Html->css('http://fonts.googleapis.com/css?family=Open+Sans:400,300');
+			echo $this->Html->css('ace.min');
+			echo $this->Html->css('ace-responsive.min');
+			echo $this->Html->css('ace-skins.min');
+		?>
+
+		<!--[if lte IE 8]>
+		  <?php
+				echo $this->Html->css('ace-ie.min');
+		  ?>
+		<![endif]-->
+
+		<!--inline styles related to this page-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+	<body>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a href="#" class="brand">
+						<small>
+							<i class="icon-leaf"></i>
+							Ace Admin
+						</small>
+					</a><!--/.brand-->
+
+					<ul class="nav ace-nav pull-right">
+						<li class="grey">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-tasks"></i>
+								<span class="badge badge-grey">4</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-closer">
+								<li class="nav-header">
+									<i class="icon-ok"></i>
+									4 Tasks to complete
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">Software Update</span>
+											<span class="pull-right">65%</span>
+										</div>
+
+										<div class="progress progress-mini ">
+											<div style="width:65%" class="bar"></div>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">Hardware Upgrade</span>
+											<span class="pull-right">35%</span>
+										</div>
+
+										<div class="progress progress-mini progress-danger">
+											<div style="width:35%" class="bar"></div>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">Unit Testing</span>
+											<span class="pull-right">15%</span>
+										</div>
+
+										<div class="progress progress-mini progress-warning">
+											<div style="width:15%" class="bar"></div>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">Bug Fixes</span>
+											<span class="pull-right">90%</span>
+										</div>
+
+										<div class="progress progress-mini progress-success progress-striped active">
+											<div style="width:90%" class="bar"></div>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										See tasks with details
+										<i class="icon-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="purple">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-bell-alt icon-animated-bell"></i>
+								<span class="badge badge-important">8</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-closer">
+								<li class="nav-header">
+									<i class="icon-warning-sign"></i>
+									8 Notifications
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-mini no-hover btn-pink icon-comment"></i>
+												New Comments
+											</span>
+											<span class="pull-right badge badge-info">+12</span>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<i class="btn btn-mini btn-primary icon-user"></i>
+										Bob just signed up as an editor ...
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-mini no-hover btn-success icon-shopping-cart"></i>
+												New Orders
+											</span>
+											<span class="pull-right badge badge-success">+8</span>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<div class="clearfix">
+											<span class="pull-left">
+												<i class="btn btn-mini no-hover btn-info icon-twitter"></i>
+												Followers
+											</span>
+											<span class="pull-right badge badge-info">+11</span>
+										</div>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										See all notifications
+										<i class="icon-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="green">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="icon-envelope icon-animated-vertical"></i>
+								<span class="badge badge-success">5</span>
+							</a>
+
+							<ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-closer">
+								<li class="nav-header">
+									<i class="icon-envelope-alt"></i>
+									5 Messages
+								</li>
+
+								<li>
+									<a href="#">
+										<img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+										<span class="msg-body">
+											<span class="msg-title">
+												<span class="blue">Alex:</span>
+												Ciao sociis natoque penatibus et auctor ...
+											</span>
+
+											<span class="msg-time">
+												<i class="icon-time"></i>
+												<span>a moment ago</span>
+											</span>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+										<span class="msg-body">
+											<span class="msg-title">
+												<span class="blue">Susan:</span>
+												Vestibulum id ligula porta felis euismod ...
+											</span>
+
+											<span class="msg-time">
+												<i class="icon-time"></i>
+												<span>20 minutes ago</span>
+											</span>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+										<span class="msg-body">
+											<span class="msg-title">
+												<span class="blue">Bob:</span>
+												Nullam quis risus eget urna mollis ornare ...
+											</span>
+
+											<span class="msg-time">
+												<i class="icon-time"></i>
+												<span>3:15 pm</span>
+											</span>
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										See all messages
+										<i class="icon-arrow-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<li class="light-blue">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
+								<span class="user-info">
+									<small>Welcome,</small>
+									Jason
+								</span>
+
+								<i class="icon-caret-down"></i>
+							</a>
+
+							<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
+								<li>
+									<a href="#">
+										<i class="icon-cog"></i>
+										Settings
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<i class="icon-user"></i>
+										Profile
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<a href="#">
+										<i class="icon-off"></i>
+										Logout
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul><!--/.ace-nav-->
+				</div><!--/.container-fluid-->
+			</div><!--/.navbar-inner-->
 		</div>
-		<div id="content">
 
-			<?php echo $this->Session->flash(); ?>
+		<div class="main-container container-fluid">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
 
-			<?php echo $this->fetch('content'); ?>
-		</div>
-		<div id="footer">
-			<?php echo $this->Html->link(
-					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
-					'http://www.cakephp.org/',
-					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')
-				);
-			?>
-			<p>
-				<?php echo $cakeVersion; ?>
-			</p>
-		</div>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
-</body>
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<button class="btn btn-small btn-success">
+							<i class="icon-signal"></i>
+						</button>
+
+						<button class="btn btn-small btn-info">
+							<i class="icon-pencil"></i>
+						</button>
+
+						<button class="btn btn-small btn-warning">
+							<i class="icon-group"></i>
+						</button>
+
+						<button class="btn btn-small btn-danger">
+							<i class="icon-cogs"></i>
+						</button>
+					</div>
+
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+
+						<span class="btn btn-info"></span>
+
+						<span class="btn btn-warning"></span>
+
+						<span class="btn btn-danger"></span>
+					</div>
+				</div><!--#sidebar-shortcuts-->
+
+				<ul class="nav nav-list">
+					<li>
+						<a href="index.html">
+							<i class="icon-dashboard"></i>
+							<span class="menu-text"> Dashboard </span>
+						</a>
+					</li>
+
+					<li>
+						<a href="typography.html">
+							<i class="icon-text-width"></i>
+							<span class="menu-text"> Typography </span>
+						</a>
+					</li>
+
+					<li>
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-desktop"></i>
+							<span class="menu-text"> UI Elements </span>
+
+							<b class="arrow icon-angle-down"></b>
+						</a>
+
+						<ul class="submenu">
+							<li>
+								<a href="elements.html">
+									<i class="icon-double-angle-right"></i>
+									Elements
+								</a>
+							</li>
+
+							<li>
+								<a href="buttons.html">
+									<i class="icon-double-angle-right"></i>
+									Buttons &amp; Icons
+								</a>
+							</li>
+
+							<li>
+								<a href="treeview.html">
+									<i class="icon-double-angle-right"></i>
+									Treeview
+								</a>
+							</li>
+
+							<li>
+								<a href="#" class="dropdown-toggle">
+									<i class="icon-double-angle-right"></i>
+
+									Three Level Menu
+									<b class="arrow icon-angle-down"></b>
+								</a>
+
+								<ul class="submenu">
+									<li>
+										<a href="#">
+											<i class="icon-leaf"></i>
+											Item #1
+										</a>
+									</li>
+
+									<li>
+										<a href="#" class="dropdown-toggle">
+											<i class="icon-pencil"></i>
+
+											4th level
+											<b class="arrow icon-angle-down"></b>
+										</a>
+
+										<ul class="submenu">
+											<li>
+												<a href="#">
+													<i class="icon-plus"></i>
+													Add Product
+												</a>
+											</li>
+
+											<li>
+												<a href="#">
+													<i class="icon-eye-open"></i>
+													View Products
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="tables.html">
+							<i class="icon-list"></i>
+							<span class="menu-text"> Tables </span>
+						</a>
+					</li>
+
+					<li>
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-edit"></i>
+							<span class="menu-text"> Forms </span>
+
+							<b class="arrow icon-angle-down"></b>
+						</a>
+
+						<ul class="submenu">
+							<li>
+								<a href="form-elements.html">
+									<i class="icon-double-angle-right"></i>
+									Form Elements
+								</a>
+							</li>
+
+							<li>
+								<a href="form-wizard.html">
+									<i class="icon-double-angle-right"></i>
+									Wizard &amp; Validation
+								</a>
+							</li>
+
+							<li>
+								<a href="wysiwyg.html">
+									<i class="icon-double-angle-right"></i>
+									Wysiwyg &amp; Markdown
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="widgets.html">
+							<i class="icon-list-alt"></i>
+							<span class="menu-text"> Widgets </span>
+						</a>
+					</li>
+
+					<li>
+						<a href="calendar.html">
+							<i class="icon-calendar"></i>
+
+							<span class="menu-text">
+								Calendar
+								<span class="badge badge-transparent tooltip-error" title="2&nbsp;Important&nbsp;Events">
+									<i class="icon-warning-sign red bigger-130"></i>
+								</span>
+							</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="gallery.html">
+							<i class="icon-picture"></i>
+							<span class="menu-text"> Gallery </span>
+						</a>
+					</li>
+
+					<li>
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-tag"></i>
+							<span class="menu-text"> More Pages </span>
+
+							<b class="arrow icon-angle-down"></b>
+						</a>
+
+						<ul class="submenu">
+							<li>
+								<a href="profile.html">
+									<i class="icon-double-angle-right"></i>
+									User Profile
+								</a>
+							</li>
+
+							<li>
+								<a href="pricing.html">
+									<i class="icon-double-angle-right"></i>
+									Pricing Tables
+								</a>
+							</li>
+
+							<li>
+								<a href="invoice.html">
+									<i class="icon-double-angle-right"></i>
+									Invoice
+								</a>
+							</li>
+
+							<li>
+								<a href="login.html">
+									<i class="icon-double-angle-right"></i>
+									Login &amp; Register
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<li class="active open">
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-file-alt"></i>
+
+							<span class="menu-text">
+								Other Pages
+								<span class="badge badge-primary ">4</span>
+							</span>
+
+							<b class="arrow icon-angle-down"></b>
+						</a>
+
+						<ul class="submenu">
+							<li>
+								<a href="error-404.html">
+									<i class="icon-double-angle-right"></i>
+									Error 404
+								</a>
+							</li>
+
+							<li>
+								<a href="error-500.html">
+									<i class="icon-double-angle-right"></i>
+									Error 500
+								</a>
+							</li>
+
+							<li>
+								<a href="grid.html">
+									<i class="icon-double-angle-right"></i>
+									Grid
+								</a>
+							</li>
+
+							<li class="active">
+								<a href="blank.html">
+									<i class="icon-double-angle-right"></i>
+									Blank Page
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul><!--/.nav-list-->
+
+				<div class="sidebar-collapse" id="sidebar-collapse">
+					<i class="icon-double-angle-left"></i>
+				</div>
+			</div>
+
+			<div class="main-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="icon-home home-icon"></i>
+							<a href="#">Home</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+						</li>
+
+						<li>
+							<a href="#">Other Pages</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+						</li>
+						<li class="active">Blank Page</li>
+					</ul><!--.breadcrumb-->
+
+					<div class="nav-search" id="nav-search">
+						<form class="form-search" />
+							<span class="input-icon">
+								<input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="icon-search nav-search-icon"></i>
+							</span>
+						</form>
+					</div><!--#nav-search-->
+				</div>
+
+				<div class="page-content">
+					<div class="row-fluid">
+						<div class="span12">
+							<!--PAGE CONTENT BEGINS-->
+							<?php echo $this->Session->flash(); ?>
+							<?php echo $this->fetch('teste_header'); ?>
+							<?php echo $this->fetch('content'); ?>
+							<?php echo $this->element('sql_dump'); ?>
+							<!--PAGE CONTENT ENDS-->
+						</div><!--/.span-->
+					</div><!--/.row-fluid-->
+				</div><!--/.page-content-->
+			</div><!--/.main-content-->
+		</div><!--/.main-container-->
+
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+			<i class="icon-double-angle-up icon-only bigger-110"></i>
+		</a>
+
+		<!--basic scripts-->
+		<!--[if IE]>
+		<?php
+			echo $this->Html->script('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
+		?>
+		<![endif]-->
+
+		<!--[if !IE]>-->
+		<?php
+			echo $this->Html->script('jquery-2.0.3.min');
+		?>
+		<!--<![endif]-->
+
+		<?php
+			echo $this->Html->script('jquery.mobile.custom.min');
+			echo $this->Html->script('bootstrap.min');
+			echo $this->Html->script('ace-elements.min');
+			echo $this->Html->script('ace.min');
+		?>
+		<!--inline scripts related to this page-->
+	</body>
 </html>
