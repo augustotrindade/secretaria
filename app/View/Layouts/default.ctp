@@ -308,7 +308,7 @@
 			<a class="menu-toggler" id="menu-toggler" href="#">
 				<span class="menu-text"></span>
 			</a>
-
+			<?php if($this->fetch('sidebar')) {?>
 			<div class="sidebar" id="sidebar">
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
@@ -583,8 +583,10 @@
 					<i class="icon-double-angle-left"></i>
 				</div>
 			</div>
-
 			<div class="main-content">
+			<?php } else { ?>
+			<div>
+			<?php }?>
 				<div class="breadcrumbs" id="breadcrumbs">
 					<ul class="breadcrumb">
 						<li>
