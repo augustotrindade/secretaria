@@ -33,6 +33,7 @@ jQuery(document).ready(function(){
 
 <fieldset>
 	<legend>Dados pessoais</legend>
+	<?php echo $this->FormAce->input('codigo', array('maxlength'=>'10','class'=>'input-small')); ?>
 	<?php echo $this->FormAce->input('nome', array('size'=>'40','maxlength'=>'255','class'=>'input-xxlarge')); ?>
 	<?php echo $this->FormAce->input('sexo',array('type'=>'select','empty'=>'.:: SELECIONE ::.','options'=>array('M'=>'Masculino','F'=>'Femenino'))); ?>
 	<?php echo $this->FormAce->input('data_nascimento', array('dateFormat' => 'DMY','minYear' => 1900, 'maxYear' => date('Y')-10,'separator' =>' / ','class'=>'input-small')); ?>
