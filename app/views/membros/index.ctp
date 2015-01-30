@@ -23,7 +23,7 @@
 			<thead>
 				<tr>
 					<th width="25px">&nbsp;</th>
-					<th width="50px"><?php echo $this->Paginator->sort('id');?></th>
+					<th width="50px"><?php echo $this->Paginator->sort('codigo');?></th>
 					<th><?php echo $this->Paginator->sort('nome');?></th>
 					<th width="110px"><?php echo $this->Paginator->sort('Congregação','Congregacao.nome');?></th>
 					<th width="110px"><?php echo $this->Paginator->sort('Função','Funcao.nome');?></th>
@@ -35,7 +35,7 @@
 			?>
 				<tr>
 					<td>
-						<input type="checkbox" value="<?php echo $membro['Membro']['id'] ?>" name="cartao[]">
+						<input type="checkbox" value="<?php echo $membro['Membro']['codigo'] ?>" name="cartao[]">
 						<label class="lbl"></label>
 					</td>
 					<td style="text-align:center">
