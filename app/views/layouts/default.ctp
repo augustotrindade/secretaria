@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /* SVN FILE: $Id: default.ctp,v 1.2 2010-03-18 14:17:44 augusto Exp $ */
 /**
  *
@@ -186,8 +186,8 @@
 									<b class="arrow icon-angle-down"></b>
 								</a>
 								<ul class="submenu">
-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Dizímos/Ofertas',array('controller'=>'entradas','action'=>'index'),array('escape'=>false)); ?></li>
-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Ofertas Alçadas',array('controller'=>'entradas','action'=>'alcadas'),array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Dizímos/Ofertas','#',array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Ofertas Alçadas','#',array('escape'=>false)); ?></li>
 								</ul>
 							</li>
 							<li>
@@ -196,10 +196,7 @@
 									Saídas
 									<b class="arrow icon-angle-down"></b>
 								</a>
-								<ul class="submenu">
-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Aniversariantes',array('controller'=>'membros','action'=>'aniversariantes'),array('escape'=>false)); ?></li>
-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Membros/Congregações',array('controller'=>'congregacoes','action'=>'membrosCongregacao'),array('escape'=>false)); ?></li>
-								</ul>
+								
 							</li>
 						</ul>
 					</li>
@@ -215,7 +212,7 @@
 				<?php echo $this->Session->flash(); ?>
 				<div class="page-content">
 					<?php echo $content_for_layout; ?>
-					<?php echo $this->element ( 'sql_dump' ); ?>
+					<?php //echo $this->element ( 'sql_dump' ); ?>
 				</div>
 			</div>
 		</div>
