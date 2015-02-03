@@ -186,8 +186,8 @@
 									<b class="arrow icon-angle-down"></b>
 								</a>
 								<ul class="submenu">
-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Dizímos/Ofertas','#',array('escape'=>false)); ?></li>
-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Ofertas Alçadas','#',array('escape'=>false)); ?></li>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Dizímos/Ofertas',array('controller'=>'entradas','action'=>'index'),array('escape'=>false)); ?></li>
+-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Ofertas Alçadas',array('controller'=>'entradas','action'=>'alcadas'),array('escape'=>false)); ?></li>
 								</ul>
 							</li>
 							<li>
@@ -212,7 +212,7 @@
 				<?php echo $this->Session->flash(); ?>
 				<div class="page-content">
 					<?php echo $content_for_layout; ?>
-					<?php //echo $this->element ( 'sql_dump' ); ?>
+					<?php echo $this->element ( 'sql_dump' ); ?>
 				</div>
 			</div>
 		</div>
