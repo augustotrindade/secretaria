@@ -39,7 +39,7 @@
 						<label class="lbl"></label>
 					</td>
 					<td style="text-align:center">
-						<?php echo str_pad($membro['Membro']['id'],4,0,STR_PAD_LEFT); ?>
+						<?php echo str_pad($membro['Membro']['codigo'],4,0,STR_PAD_LEFT); ?>
 					</td>
 					<td title="<?php echo $membro['Membro']['nome'] ?>">
 						<?php echo substr($membro['Membro']['nome'],0,20).(strlen($membro['Membro']['nome'])>20?'...':''); ?>

@@ -14,7 +14,7 @@ class Congregacao extends AppModel {
 			'className' => 'Membro',
 			'foreignKey' => 'congregacao_id',
 			'dependent' => false,
-			'conditions' => '',
+			'conditions' => array('Membro.situacao'=>true),
 			'fields' => '',
 			'order' => '',
 			'limit' => '',

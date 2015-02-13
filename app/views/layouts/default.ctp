@@ -186,9 +186,9 @@
 									<b class="arrow icon-angle-down"></b>
 								</a>
 								<ul class="submenu">
+
 									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Dizímos/Ofertas','#',array('escape'=>false)); ?></li>
-									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Ofertas Alçadas','#',array('escape'=>false)); ?></li>
-								</ul>
+									<li><?php echo $this->Html->link('<i class="icon-cog"></i> Ofertas Alçadas','#',array('escape'=>false)); ?></li>							</ul>
 							</li>
 							<li>
 								<a href="#" class="dropdown-toggle">
